@@ -73,7 +73,24 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.stat-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
 
+/* Add a pulsing animation when counting */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.stat-card.animating .stat-number {
+  animation: pulse 0.5s ease-in-out;
+}
 /* Mobile Menu Button */
 .mobile-menu-btn {
   display: none;

@@ -156,11 +156,65 @@ function ServiceCard({ title, description, icon }: { title: string; description:
     </div>
   );
 }
+// Counter Component
+function Counter({ target, suffix, duration = 2000 }: { target: number; suffix: string; duration?: number }) {
+  const [count, setCount] = useState(0);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  useEffect(() => {
+    if (!hasStarted) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !hasStarted) {
+            setHasStarted(true);
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+              start += increment;
+              if (start >= target) {
+                setCount(target);
+                clearInterval(timer);
+              } else {
+                setCount(Math.floor(start));
+              }
+            }, 16);
+          }
+        },
+        { threshold: 0.3 }
+      );
+
+      const element = document.getElementById('about');
+      if (element) observer.observe(element);
+
+      return () => observer.disconnect();
+    }
+  }, [target, duration, hasStarted]);
+
+  return (
+    <>{count}{suffix}</>
+  );
+}
 
 // Main Home Component
 export default function Home() {
   const [language, setLanguage] = useState<Language>('en');
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+  const [counters, setCounters] = useState({
+    projects: 0,
+    clients: 0,
+    experience: 0,
+    technicians: 0
+  });
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  // Stats configuration
+  const statsConfig = {
+    projects: { target: 500, suffix: "+", duration: 2000 },
+    clients: { target: 98, suffix: "%", duration: 1500 },
+    experience: { target: 15, suffix: "+", duration: 1800 },
+    technicians: { target: 25, suffix: "+", duration: 1600 }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -168,20 +222,59 @@ export default function Home() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-fade-in-visible');
+            
+            // Start counters when stats section becomes visible
+            if (entry.target.id === 'about' && !hasAnimated) {
+              startCounters();
+              setHasAnimated(true);
+            }
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.3 } // Increased threshold for better trigger
     );
     
-    sectionRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
+    // Observe the about section
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      observer.observe(aboutSection);
+    }
     
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [hasAnimated]);
+
+  const startCounters = () => {
+    Object.keys(statsConfig).forEach((key) => {
+      const { target, duration } = statsConfig[key as keyof typeof statsConfig];
+      animateCounter(key as keyof typeof counters, target, duration);
+    });
+  };
+
+  const animateCounter = (key: keyof typeof counters, target: number, duration: number) => {
+    let startTimestamp: number | null = null;
+    
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const currentValue = Math.floor(easeOutQuart * target);
+      
+      setCounters(prev => ({
+        ...prev,
+        [key]: currentValue
+      }));
+      
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+    
+    requestAnimationFrame(step);
+  };
 
   const translations: Translations = {
     en: {
@@ -344,7 +437,7 @@ export default function Home() {
         </section>
 
         {/* About Section */}
-        <section className="about-section" id="about">
+         <section className="about-section" id="about">
           <div className="container">
             <h2 className="section-title">{t.aboutUs}</h2>
             <div className="about-content">
@@ -360,19 +453,33 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="stats-grid">
-              {[
-                { number: "500+", label: t.projectsCompleted },
-                { number: "98%", label: t.happyClients },
-                { number: "15+", label: t.yearsExperience },
-                { number: "25+", label: t.certifiedTechnicians }
-              ].map((stat, index) => (
-                <div key={index} className="stat-card">
-                  <div className="stat-number">{stat.number}</div>
-                  <div className="stat-label">{stat.label}</div>
-                </div>
-              ))}
-            </div>
+           
+<div className="stats-grid">
+  <div className="stat-card">
+    <div className="stat-number">
+      <Counter target={500} suffix="+" duration={2000} />
+    </div>
+    <div className="stat-label">{t.projectsCompleted}</div>
+  </div>
+  <div className="stat-card">
+    <div className="stat-number">
+      <Counter target={98} suffix="%" duration={1500} />
+    </div>
+    <div className="stat-label">{t.happyClients}</div>
+  </div>
+  <div className="stat-card">
+    <div className="stat-number">
+      <Counter target={15} suffix="+" duration={1800} />
+    </div>
+    <div className="stat-label">{t.yearsExperience}</div>
+  </div>
+  <div className="stat-card">
+    <div className="stat-number">
+      <Counter target={25} suffix="+" duration={1600} />
+    </div>
+    <div className="stat-label">{t.certifiedTechnicians}</div>
+  </div>
+</div>
           </div>
         </section>
 
