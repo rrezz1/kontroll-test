@@ -17,6 +17,13 @@ import Activities from '@/components/Activities';
 
 const translations: Translations = {
   en: {
+
+  project1_Titlee:"Relux-Llapnaselle (Prishtine)",
+  project2_Titlee:"Factory 'Drena'-Skenderaj",
+  project3_Titlee:"'Ballkan'- Suharekë",
+  project4_Titlee:"'Fruteks'-Gelance,Suharekë",
+  project5_Titlee:"UNOPS - Prishtinë, Ferizaj, Gjilan, Pejë, Mitrovicë",
+  project6_Titlee:"Evaporator pipes from Kosova B-Termokos",
     // Navigation
     home: "Home",
     about: "About Us",
@@ -35,7 +42,7 @@ const translations: Translations = {
     
     // About Section
     about_title: "About Us",
-    about_heading: "SH.P.K. \"Kontroll Test\"",
+    about_heading: "L.L.C. \"Kontroll Test\"",
     about_text1: "is a company that offers non-destructive material testing services in Kosovo (NDT) with X-ray RT2, Ultrasonic UT2, Penetrant PT2, Magnetic Flux MT2, Visual Inspection PT2 methods. With personnel certified according to ISO EN 1712 standard.",
     about_text2: "With 18 years of experience in the field of Pressure Vessel Inspections, Accredited by DAK, according to Standard SK EN ISO/IEC 17020. As an Authorized Body for conformity assessment, including calibration, certification and periodic controls of pressure equipment and installations.",
     about_cta: "Our Services",
@@ -61,16 +68,17 @@ const translations: Translations = {
     service9_title: "Microstructure Analysis",
     service9_desc: "This method involves visualization and evaluation of microstructures of metals, pipes, plates, etc.",
     
-    // How It Works Section
-    how_it_works: "How It Works",
+    // How We Work Section
+    how_it_works: "How We Work",
     step1: "Contact Us",
-    step1_desc: "Get in touch to discuss your needs and schedule inspection.",
+    step1_desc: "Discuss your project, technical requirements, or collaboration opportunities with our team.",
     step2: "On-Site Inspection",
-    step2_desc: "Our certified technicians conduct thorough testing at your location.",
+    step2_desc: "A complete engineering process is carried out, including detailed analysis, testing, and technical evaluation on-site.",
     step3: "Detailed Report",
-    step3_desc: "Receive comprehensive report with findings and recommendations.",
+    step3_desc: "Your equipment and system receive an official certification for safety and compliance with the relevant standards.",
     step4: "Certification",
-    step4_desc: "Get official certification for your system safety.",
+    step4_desc: "Accredited certification for compliance and safety, in accordance with legal requirements and standards.",
+
     
     // Projects Section
     projects_title: "Completed Projects",
@@ -80,6 +88,9 @@ const translations: Translations = {
     project4_desc: "Equipment testing and certification",
     project5_desc: "Medical facility inspection",
     project6_desc: "Steam pipes inspection",
+
+    project7_Titlee:"Cement Factory - Fushe Kruje",
+    project7_desc: " Penetrant testing of welds",
     
     // Contact Section
     contact_title: "Contact Us",
@@ -97,9 +108,39 @@ const translations: Translations = {
     footer_about_text: "Professional non-destructive testing and inspection services with 18+ years of experience.",
     footer_services: "Our Services",
     footer_contact: "Contact Info",
-    footer_rights: "All rights reserved"
+    footer_rights: "All rights reserved",
+
+    rregullorjaMED:"Regulations (MED) NR. 02/2019 For the inspection , review, and assessment of the technical safety of pressure equipment in operation.",
+    law06:"Law No. 06/L-031 on pressure equipment – Authorizations for performing the technical inspection of high-risk installations",
+ 
+   kadaja:"Boilers",
+  kaldajaText:"Steam and hot-water boilers, safety valves",
+
+  RezervuaretMetalike:"Metal tanks",
+  RezervuaretMetalikeText:"For liquids–gases operating with an overpressure PS < 16 bar; TS < 200°C and 100 < V × PS < 4000",
+
+  Tubacione:"Steam pipelines",
+  TubacionetextL:"6 bar < PS < 80 bar and hot water – 110°C < TS < 450°C and 100 < D × PS",
+
+  SistemeInstalime:"Gas systems and installations",
+  SistemeInstalimeText:"Inspection of gas systems and installations",
+
+  RezervuareFtohese: "Cooling tanks",
+  RezervuareFtoheseText:"Inspection of cooling tanks",
+
+  RezervuariGLN:"LPG tank",
+  RezervuariGLNText:"Evaporator and LPG reducer, testing and calibration of safety valves",
+
+  Gypa:"Pipes, Boilers, and Collectors",
+  GypaText:"Inspection of pipes, boilers, and collectors",
   },
   de: {
+  project1_Titlee:"Relux-Llapnaselle (Prishtine)",
+  project2_Titlee:"Fabrik 'Drena'-Skenderaj",
+  project3_Titlee:"'Ballkan'- Suharekë",
+  project4_Titlee:"'Fruteks'-Gelance,Suharekë",
+  project5_Titlee:"UNOPS - Prishtinë, Ferizaj, Gjilan, Pejë, Mitrovicë",
+  project6_Titlee:"Verdampferrohre von Kosova B-Termokos",
      // Activities Section
     activities_title: "Unsere Aktivitäten",
     activities_intro: "Welche Dienstleistungen bieten wir an? 'KONTROLL TEST' sh.p.k. führt technische Inspektionen von Hochrisikoanlagen durch in Übereinstimmung mit:",
@@ -115,7 +156,7 @@ const translations: Translations = {
     hero_subtitle: "Sicherheit und Konformität durch fachkundige Inspektion und Prüfung gewährleisten",
     hero_cta: "Inspektion anfordern",
     about_title: "Über Uns",
-    about_heading: "SH.P.K. \"Kontroll Test\"",
+    about_heading: "GmbH \"Kontroll Test\"",
     about_text1: "ist ein Unternehmen, das zerstörungsfreie Materialprüfdienstleistungen im Kosovo (NDT) mit Röntgenstrahlen RT2, Ultraschall UT2, Eindringmittel PT2, Magnetfluss MT2, visueller Inspektion PT2 anbietet. Mit Personal, das nach ISO EN 1712 Standard zertifiziert ist.",
     about_text2: "Mit 18 Jahren Erfahrung im Bereich der Druckbehälterinspektionen, akkreditiert von DAK, gemäß Standard SK EN ISO/IEC 17020. Als autorisierte Stelle für die Konformitätsbewertung, einschließlich Kalibrierung, Zertifizierung und periodischer Kontrollen von Druckgeräten und -anlagen.",
     about_cta: "Unsere Dienstleistungen",
@@ -138,21 +179,24 @@ const translations: Translations = {
     service8_desc: "Härtemessung basierend auf den Ergebnissen der mechanischen Wechselwirkung zwischen zwei Festkörpern.",
     service9_title: "Mikrostrukturanalyse",
     service9_desc: "Dieses Verfahren umfasst die Visualisierung und Bewertung von Mikrostrukturen von Metallen, Rohren, Platten usw.",
-    how_it_works: "Wie es funktioniert",
-    step1: "Kontaktieren Sie uns",
-    step1_desc: "Nehmen Sie Kontakt auf, um Ihre Anforderungen zu besprechen und eine Inspektion zu planen.",
-    step2: "Vor-Ort-Inspektion",
-    step2_desc: "Unsere zertifizierten Techniker führen gründliche Tests an Ihrem Standort durch.",
-    step3: "Detaillierter Bericht",
-    step3_desc: "Erhalten Sie einen umfassenden Bericht mit Ergebnissen und Empfehlungen.",
-    step4: "Zertifizierung",
-    step4_desc: "Erhalten Sie eine offizielle Zertifizierung für die Sicherheit Ihres Systems.",
+    how_it_works: "Wie Wir Arbeiten",
+step1: "Kontaktieren Sie uns",
+step1_desc: "Besprechen Sie Ihr Projekt, technische Anforderungen oder Kooperationsmöglichkeiten mit unserem Team.",
+step2: "Inspektion vor Ort",
+step2_desc: "Vollständiger ingenieurtechnischer Prozess durchgeführt, einschließlich detaillierter Analyse, Tests und technischer Bewertung am Einsatzort.",
+step3: "Detaillierter Bericht",
+step3_desc: "Ihre Ausrüstung und Ihr System erhalten eine offizielle Zertifizierung für Sicherheit und Konformität mit den entsprechenden Standards.",
+step4: "Zertifizierung",
+step4_desc: "Akkreditierte Zertifizierung für Konformität und Sicherheit, gemäß den gesetzlichen Anforderungen und Standards.",
+
     projects_title: "Abgeschlossene Projekte",
     project1_desc: "Druckbehälterinspektion und -prüfung",
     project2_desc: "Industrieausrüstungsinspektion",
     project3_desc: "Pipeline-Prüfung und Zertifizierung",
     project4_desc: "Ausrüstungsprüfung und Zertifizierung",
     project5_desc: "Medizinische Einrichtungsinspektion",
+      project7_Titlee:"Betonfabrik - Fushe Kruje",
+    project7_desc: "Eindringprüfung von Schweißnähten",
     project6_desc: "Dampfrohrinspektion",
     contact_title: "Kontaktieren Sie Uns",
     contact_info: "Kontakt Aufnehmen",
@@ -167,9 +211,40 @@ const translations: Translations = {
     footer_about_text: "Professionelle zerstörungsfreie Prüf- und Inspektionsdienstleistungen mit mehr als 18 Jahren Erfahrung.",
     footer_services: "Unsere Dienstleistungen",
     footer_contact: "Kontaktinformationen",
-    footer_rights: "Alle Rechte vorbehalten"
+    footer_rights: "Alle Rechte vorbehalten",
+    rregullorjaMED:"Die Verordnung (MWE) NR. 02/2019 Für die Kontrolle, Überprüfung und Bewertung der technischen Sicherheit von Druckgeräten im Betrieb.",
+    law06:"Gesetz Nr. 06/L-031 über Druckgeräte – Genehmigungen zur Durchführung der technischen Inspektion von Hochrisikoanlagen",
+
+  kadaja:"Kessel",
+  kaldajaText:"Dampf- und Heißwasserkessel, Sicherheitsventile",
+
+  RezervuaretMetalike:"Metalltanks",
+  RezervuaretMetalikeText:"Für Flüssigkeiten–Gase, die mit einem Überdruck PS < 16 bar betrieben werden; TS < 200°C und 100 < V × PS < 4000",
+
+  Tubacione:"Dampfleitungen",
+  TubacionetextL:"6 bar < PS < 80 bar und Heißwasser – 110°C < TS < 450°C und 100 < D × PS",
+
+  SistemeInstalime:"Gasinstallationen und -anlagen",
+  SistemeInstalimeText:"Inspektion von Gasinstallationen und -anlagen",
+
+  RezervuareFtohese: "Kühltanks",
+  RezervuareFtoheseText:"Inspektion von Kühltanks",
+
+  RezervuariGLN:"LPG-Tank (Flüssiggas)",
+  RezervuariGLNText:"Verdampfer und LPG-Druckregler, Prüfung und Kalibrierung von Sicherheitsventilen",
+
+  Gypa:"Rohre, Kessel und Kollektoren",
+  GypaText:"Inspektion der Rohre, Kessel und Kollektoren",
   },
   sq: {
+
+    
+  project1_Titlee:"Relux-Llapnaselle (Prishtine)",
+  project2_Titlee:"Fabrika 'Drena'-Skenderaj",
+  project3_Titlee:"'Ballkan'- Suharekë",
+  project4_Titlee:"'Fruteks'-Gelance,Suharekë",
+  project5_Titlee:"UNOPS - Prishtinë, Ferizaj, Gjilan, Pejë, Mitrovicë",
+  project6_Titlee:"Tubat e avulluesit Kosova B-Termokos",
       // Activities Section
     activities_title: "Aktivitetet tona",
     activities_intro: "Çfarë shërbimesh ofrojmë? 'KONTROLL TEST' sh.p.k. kryen inspektimin teknik të instalimeve me rrezikshmëri të lartë në përputhje me:",
@@ -208,15 +283,15 @@ const translations: Translations = {
     service8_desc: "Matja e fortësisë bazohet në rezultatet e bashkëveprimit mekanik midis dy trupave të ngurtë.",
     service9_title: "Analiza e Mikrostrukturës-Metalografia",
     service9_desc: "Kjo metodë përfshin vizualizimin dhe vlerësimin e mikrostrukturave të metaleve, gypave, pllakave etj.",
-    how_it_works: "Si Funksionon",
+    how_it_works: "Si Punojmë",
     step1: "Na Kontaktoni",
-    step1_desc: "Lidhuni për të diskutuar nevojat tuaja dhe planifikoni inspektimin.",
+    step1_desc: "Diskutoni me ekipin tonë rreth projektit tuaj, kërkesave teknike ose mundësive të bashkëpunimit.",
     step2: "Inspektim në Vend",
-    step2_desc: "Teknikët tanë të certifikuar kryejnë testim të plotë në vendndodhjen tuaj.",
+    step2_desc: "Realizohet një proces i plotë inxhinierik, që përfshin analizë të detajuar, testime dhe vlerësim teknik në vendpunës.",
     step3: "Raport i Detajuar",
-    step3_desc: "Merrni raport të plotë me gjetjet dhe rekomandimet.",
+    step3_desc: "Pajisjet dhe sistemi juaj merr certifikimin zyrtar për sigurinë dhe përputhshmërinë me standardet përkatëse.",
     step4: "Certifikim",
-    step4_desc: "Merrni certifikatën zyrtare për sigurinë e sistemit tuaj.",
+    step4_desc: "Certifikim i akredituar për përputhshmëri dhe siguri, në përputhje me kërkesat  dhe standardet ligjore.",
     projects_title: "Projektet e Realizuara",
     project1_desc: "Inspektimi dhe testimi i enëve nën presion",
     project2_desc: "Inspektimi i pajisjeve industriale",
@@ -224,6 +299,8 @@ const translations: Translations = {
     project4_desc: "Testimi dhe certifikimi i pajisjeve",
     project5_desc: "Inspektimi i objektit shëndetësor",
     project6_desc: "Inspektimi i gypave të avullit",
+    project7_Titlee:"Fabrika e betonit - Fushe Kruje",
+    project7_desc: "Testimi i saldimeve me penetrant",
     contact_title: "Na Kontaktoni",
     contact_info: "Lidhuni me Ne",
     contact_address: "Kosovë",
@@ -237,8 +314,34 @@ const translations: Translations = {
     footer_about_text: "Shërbime profesionale të testimit dhe inspektimit pa shkatërrim me më shumë se 18 vjet përvojë.",
     footer_services: "Shërbimet Tona",
     footer_contact: "Informacione Kontakti",
-    footer_rights: "Të gjitha të drejtat e rezervuara"
-  }
+    footer_rights: "Të gjitha të drejtat e rezervuara",
+    rregullorjaMED:"Rregullorja (MZHE) nr. 02/2019 për kontrollin, shqyrtimin dhe vlerësimin e sigurisë teknike të pajisjeve nën presion në shfrytëzim.",
+  law06:"Ligji nr. 06/L-031 për pajisjet nën presion – Autorizime për kryerjen e inspektimit teknik të instalimeve me rrezikshmëri të lartë.",
+ 
+ 
+  kadaja:"Kaldaja",
+  kaldajaText:"Kaldaja me avull dhe ujë të nxehtë, valvolat siguruese",
+
+  RezervuaretMetalike:"Rezervuarët metalike",
+  RezervuaretMetalikeText:"Për lëngje-gazra që operojnë me një presion të tepërt PS < 16 bar; TS < 200°C dhe 100 < V x PS < 4000",
+
+  Tubacione:"Tubacione për avull",
+  TubacionetextL:"6 bar < PS < 80 bar dhe ujë të nxehtë – 110°C < TS < 450°C dhe 100 < D x PS",
+
+  SistemeInstalime:"Sisteme dhe instalime gazi",
+  SistemeInstalimeText:"Inspektimi i sistemeve dhe instalimeve të gazit",
+
+  RezervuareFtohese: "Rezervuare ftohëse",
+  RezervuareFtoheseText:"Inspektimi i rezervuarëve ftohës",
+
+  RezervuariGLN:"Rezervuari i GLN-së",
+  RezervuariGLNText:"Avulluesi dhe Reduktori i GLN-së, Testimi dhe Bazhadarimi i Valvolave Siguruese",
+
+  Gypa:"Gypa, Kaldaja dhe Kolektorë",
+  GypaText:"Inspektimi i gypave, kaldajave dhe kolektorëve",
+  
+
+}
 };
 
 export default function Home() {

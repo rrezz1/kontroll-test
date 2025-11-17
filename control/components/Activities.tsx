@@ -7,7 +7,7 @@ interface ActivitiesProps {
 export default function Activities({ translations }: ActivitiesProps) {
   const activities = [
     {
-      title: "Kaldaja",
+      title: 'asd',
       description: "Kaldaja me avull dhe ujë të nxehtë, valvolat siguruese"
     },
     {
@@ -46,14 +46,14 @@ export default function Activities({ translations }: ActivitiesProps) {
           <div className="regulations">
             <p><strong>{translations.regulations_title}:</strong></p>
             <ul>
-              <li>RREGULLORJA (MZHE) NR. 02/2019 PËR KONTROLLIN SHQYRTIMIN DHE VLERËSIMIN E SIGURISË TEKNIKE TË PAJISJEVE NËN PRESION NË SHFRYTËZIM</li>
-              <li>LIGJI Nr. 06/L-031 PËR PAJISJET NËN PRESION - Autorizime për të Kryerë Inspektimin Teknik të Instalimeve me rrezikshmëri të lartë</li>
+              <li>{translations.rregullorjaMED}</li>
+              <li>{translations.law06}</li>
             </ul>
           </div>
         </div>
 
         <div className="activities-grid">
-          {activities.map((activity, index) => (
+          {/* {activities.map((activity, index) => (
             <div key={index} className="activity-card">
               <div className="activity-icon">
                 <i className="fas fa-cogs"></i>
@@ -63,8 +63,84 @@ export default function Activities({ translations }: ActivitiesProps) {
                 <p>{activity.description}</p>
               </div>
             </div>
-          ))}
+          ))} */}
+           <div  className="activity-card">
+              <div className="activity-icon">
+                <i className="fas fa-cogs"></i>
+              </div>
+              <div className="activity-content">
+                <h3>{translations.kadaja}</h3>
+                <p>{translations.kaldajaText}</p>
+              </div>
+            </div>
+
+            <div  className="activity-card">
+              <div className="activity-icon">
+                <i className="fas fa-cogs"></i>
+              </div>
+              <div className="activity-content">
+                <h3>{translations.RezervuaretMetalike}</h3>
+                <p>{translations.RezervuaretMetalikeText}</p>
+              </div>
+            </div>
+
+
+            <div  className="activity-card">
+              <div className="activity-icon">
+                <i className="fas fa-cogs"></i>
+              </div>
+              <div className="activity-content">
+                <h3>{translations.Tubacione}</h3>
+                <p>{translations.RezervuaretMetalikeText}</p>
+              </div>
+            </div>
+
+
+            <div  className="activity-card">
+              <div className="activity-icon">
+                <i className="fas fa-cogs"></i>
+              </div>
+              <div className="activity-content">
+                <h3>{translations.SistemeInstalime}</h3>
+                <p>{translations.SistemeInstalimeText}</p>
+              </div>
+            </div>
+
+
+              <div  className="activity-card">
+              <div className="activity-icon">
+                <i className="fas fa-cogs"></i>
+              </div>
+              <div className="activity-content">
+                <h3>{translations.RezervuareFtohese}</h3>
+                <p>{translations.RezervuareFtoheseText}</p>
+              </div>
+            </div>
+
+
+              <div  className="activity-card">
+              <div className="activity-icon">
+                <i className="fas fa-cogs"></i>
+              </div>
+              <div className="activity-content">
+                <h3>{translations.RezervuariGLN}</h3>
+                <p>{translations.RezervuariGLNText}</p>
+              </div>
+            </div>
+
+
+
+            <div  className="activity-card">
+              <div className="activity-icon">
+                <i className="fas fa-cogs"></i>
+              </div>
+              <div className="activity-content">
+                <h3>{translations.Gypa}</h3>
+                <p>{translations.GypaText}</p>
+              </div>
+            </div>
         </div>
+        
 
         {/* GLN Systems Images */}
         <div className="gln-section">

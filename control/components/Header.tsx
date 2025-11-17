@@ -17,7 +17,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
       home: "Home",
       about: "About Us",
       services: "Services",
-        activities: "Our Activities", 
+      activities: "Our Activities", 
       projects: "Projects",
       contact: "Contact"
     },
@@ -25,7 +25,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
       home: "Startseite",
       about: "Über Uns",
       services: "Dienstleistungen",
-      activities: "Our Activities",
+      activities: "Unsere Aktivitäten",
       projects: "Projekte",
       contact: "Kontakt"
     },
@@ -33,7 +33,7 @@ export default function Header({ language, setLanguage }: HeaderProps) {
       home: "Kryefaqja",
       about: "Rreth Nesh",
       services: "Shërbimet",
-      activities: "Our Activities",
+      activities: "Aktivitetet tona",
       projects: "Projektet",
       contact: "Kontakt"
     }

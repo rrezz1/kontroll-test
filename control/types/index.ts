@@ -1,16 +1,11 @@
 export type Language = 'en' | 'de' | 'sq';
 
 export interface TranslationKeys {
-  activities_title: string;
-  activities_intro: string;
-  regulations_title: string;
-  gln_systems: string;
-  
   // Navigation
   home: string;
   about: string;
   services: string;
-  projects: string;
+  accreditation: string;
   contact: string;
   
   // Hero Section
@@ -46,31 +41,13 @@ export interface TranslationKeys {
   service9_title: string;
   service9_desc: string;
   
-  // How It Works Section
-  how_it_works: string;
-  step1: string;
-  step1_desc: string;
-  step2: string;
-  step2_desc: string;
-  step3: string;
-  step3_desc: string;
-  step4: string;
-  step4_desc: string;
-  
-  // Projects Section
-  projects_title: string;
-  project1_desc: string;
-  project2_desc: string;
-  project3_desc: string;
-  project4_desc: string;
-  project5_desc: string;
-  project6_desc: string;
+  // Accreditation
+  accreditation_title: string;
   
   // Contact Section
   contact_title: string;
   contact_info: string;
   contact_address: string;
-  accreditation_title: string;
   form_name: string;
   form_email: string;
   form_phone: string;
@@ -83,6 +60,73 @@ export interface TranslationKeys {
   footer_services: string;
   footer_contact: string;
   footer_rights: string;
+activities_title:string;
+activities_intro: string;
+regulations_title:string;
+projects_title:string;
+gln_systems:string;
+projects:string;
+
+  //rregulloret
+  rregullorjaMED : string;
+  law06:string;
+
+  //sherbimet
+  kadaja:string;
+  kaldajaText:string;
+
+  RezervuaretMetalike:string;
+  RezervuaretMetalikeText:string;
+
+  Tubacione:string;
+  TubacionetextL:string;
+
+  SistemeInstalime:string;
+  SistemeInstalimeText:string;
+
+  RezervuareFtohese: string;
+  RezervuareFtoheseText:string;
+
+  RezervuariGLN:string;
+  RezervuariGLNText:string;
+
+  Gypa:string;
+  GypaText:string;
+
+
+
+
+  //how it works
+  how_it_works:string;
+
+
+
+  //other
+
+
+  project1_Titlee: string;
+  project2_Titlee: string;
+  project3_Titlee: string;
+  project4_Titlee: string;
+  project5_Titlee: string;
+  project6_Titlee: string;
+ project7_Titlee: string;
+  project1_desc: string;
+  project2_desc: string;
+  project3_desc: string;
+  project4_desc: string;
+  project5_desc: string;
+  project6_desc: string;
+ project7_desc: string;
+
+  step1:string;
+step2:string;
+   step2_desc: string;
+    step3: string;
+    step3_desc:string; 
+    step4:string; 
+    step4_desc: string;
+  step1_desc:string;
 }
 
 export type Translations = {

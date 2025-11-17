@@ -7,35 +7,42 @@ interface ProjectsProps {
 export default function Projects({ translations }: ProjectsProps) {
   const projects = [
     {
-      image: '/images/DisaNgaProjektet/1.png',
-      title: 'Relux-Llapnaselle (Prishtine)',
-      description: translations.project1_desc
-    },
-    {
-      image: '/images/DisaNgaProjektet/2.png',
-      title: 'Fabrika "Drena"-Skenderaj',
-      description: translations.project2_desc
-    },
-    {
-      image: '/images/DisaNgaProjektet/3.png',
-      title: '"Ballkan"-Suharekë',
-      description: translations.project3_desc
-    },
-    {
-      image: '/images/DisaNgaProjektet/4.png',
-      title: '"Fruteks"-Gelance,Suhareke',
-      description: translations.project4_desc
-    },
-    {
       image: '/images/DisaNgaProjektet/5.png',
-      title: 'Spitali –Gjilan',
+      title: translations.project5_Titlee,
       description: translations.project5_desc
     },
     {
       image: '/images/DisaNgaProjektet/6.png',
-      title: 'Gypat e Avulluesit nga Kosova B-Termokos',
+      title: translations.project6_Titlee,
       description: translations.project6_desc
+    },
+    {
+      image: '/images/DisaNgaProjektet/7.png',
+      title: translations.project7_Titlee,
+      description: translations.project7_desc
+    },
+    {
+      image: '/images/DisaNgaProjektet/1.png',
+      title: translations.project1_Titlee,
+      description: translations.project1_desc
+    },
+    {
+      image: '/images/DisaNgaProjektet/2.png',
+      title: translations.project2_Titlee,
+      description: translations.project2_desc
+    },
+    {
+      image: '/images/DisaNgaProjektet/3.png',
+      title: translations.project3_Titlee,
+      description: translations.project3_desc
+    },
+    {
+      image: '/images/DisaNgaProjektet/4.png',
+      title: translations.project4_Titlee,
+      description: translations.project4_desc
     }
+
+
   ];
 
   return (
