@@ -1,28 +1,25 @@
-import "./globals.css";
-import type { ReactNode } from "react";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
 
-// For better TypeScript, you can use this metadata type
-export const metadata = {
-  title: "Control Test - Gas Pipe Control Services",
-  description: "Professional gas pipe control and testing services ensuring safety and compliance",
-  keywords: "gas pipe, control, testing, safety, inspection",
-  authors: [{ name: "Control Test" }],
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata: Metadata = {
+  title: 'Kontroll Test - Professional Inspection Services',
+  description: 'Professional non-destructive testing and inspection services with 18+ years of experience',
 };
 
-// You can also add viewport for responsive design
-export const viewport = {
-  width: 'device-width',
-  initialScale: 1,
-};
-
-interface RootLayoutProps {
-  children: ReactNode;
-}
-
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <body>
+      <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+      </head>
+      <body className={inter.className}>
         {children}
       </body>
     </html>

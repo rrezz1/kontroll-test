@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontroll Test - Professional Inspection Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #059669;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #6b7280;
+            --light-gray: #e5e7eb;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(30, 64, 175, 0.3);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), #10b981);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 6px 12px rgba(5, 150, 105, 0.3);
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--light);
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--light-gray);
+        }
+
+        .language-switcher button {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--gray);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .language-switcher button.active,
+        .language-switcher button:hover {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            width: 40px;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--light);
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--dark);
+            margin: 3px 0;
+            transition: var(--transition);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            padding: 1rem 0;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .mobile-menu.active {
+            display: block;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 0 2rem;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav-links a {
+            display: block;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .mobile-nav-links a:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+
+        .mobile-language-switcher {
+            padding: 1rem 2rem;
+            border-top: 1px solid var(--light-gray);
+            margin-top: 1rem;
+        }
+
+        .mobile-language-switcher h3 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            color: var(--gray);
+        }
+
+        .mobile-language-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .mobile-language-buttons button {
+            flex: 1;
+            background: transparent;
+            border: 1px solid var(--light-gray);
+            color: var(--gray);
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .mobile-language-buttons button.active,
+        .mobile-language-buttons button:hover {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 10rem 0 5rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 4rem 0;
+            background: var(--white);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .process-step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin: 0 auto 1rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .process-step p {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--white);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+            background: var(--white);
+        }
+
+        .project-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .project-info p {
+            color: var(--gray);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--light);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-right: 1rem;
+            margin-top: 0.2rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: 6px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #cbd5e1;
+            text-decoration: none;
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .gallery-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero {
+                padding: 8rem 0 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .services-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .mobile-nav-links,
+            .mobile-language-switcher {
+                padding: 0 1rem;
+            }
+
+            .image-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Kontroll Test Logo">
+                    <h1>Kontroll Test</h1>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About Us</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li>
+                        <div class="language-switcher">
+                            <button class="lang-btn active" data-lang="en">EN</button>
+                            <button class="lang-btn" data-lang="de">DE</button>
+                            <button class="lang-btn" data-lang="sq">SQ</button>
+                        </div>
+                    </li>
+                </ul>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-links">
+            <li><a href="#home" class="mobile-nav-link">Home</a></li>
+            <li><a href="#about" class="mobile-nav-link">About Us</a></li>
+            <li><a href="#services" class="mobile-nav-link">Services</a></li>
+            <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
+        
+        <div class="mobile-language-switcher">
+            <h3>Language / Sprache / Gjuha</h3>
+            <div class="mobile-language-buttons">
+                <button class="mobile-lang-btn active" data-lang="en">EN</button>
+                <button class="mobile-lang-btn" data-lang="de">DE</button>
+                <button class="mobile-lang-btn" data-lang="sq">SQ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-translate="hero_title">Professional Inspection & Testing Services</h1>
+                <p data-translate="hero_subtitle">Ensuring safety and compliance through expert inspection and testing</p>
+                <a href="#contact" class="btn" data-translate="hero_cta">Request Inspection</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title" data-translate="about_title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 data-translate="about_heading">SH.P.K. "Kontroll Test"</h2>
+                    <p data-translate="about_text1">is a company that offers non-destructive material testing services in Kosovo (NDT) with X-ray RT2, Ultrasonic UT2, Penetrant PT2, Magnetic Flux MT2, Visual Inspection PT2 methods. With personnel certified according to ISO EN 1712 standard.</p>
+                    <p data-translate="about_text2">With 18 years of experience in the field of Pressure Vessel Inspections, Accredited by DAK, according to Standard SK EN ISO/IEC 17020. As an Authorized Body for conformity assessment, including calibration, certification and periodic controls of pressure equipment and installations.</p>
+                    <a href="#services" class="btn btn-secondary" data-translate="about_cta">Our Services</a>
+                </div>
+                <div class="about-image">
+                    <img src="images/about-image.jpg" alt="About Kontroll Test">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title" data-translate="services_title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-x-ray"></i>
+                    </div>
+                    <h3 data-translate="service1_title">Radiographic Methods (RT)</h3>
+                    <p data-translate="service1_desc">Radiographic testing methods based on irradiating welds, details, etc. with X-rays, on pipes, metal plates, etc.</p>
+                    <div class="image-gallery">
+                        <div class="gallery-image">
+                            <img src="images/MetodatRadiografike/1.png" alt="Radiographic Testing 1">
+                        </div>
+                        <div class="gallery-image">
+                            <img src="images/MetodatRadiografike/2.png" alt="Radiographic Testing 2">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <h3 data-translate="service2_title">Ultrasonic Testing (UT)</h3>
+                    <p data-translate="service2_desc">Ultrasonic testing of welded joints in pipes, plates, shafts, axes, etc. in material thickness up to 5 m.</p>
+                    <div class="image-gallery">
+                        <div class="gallery-image">
+                            <img src="images/KontrollimiUltraze/1.png" alt="Ultrasonic Testing">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3 data-translate="service3_title">Wall Thickness Measurement</h3>
+                    <p data-translate="service3_desc">Wall thickness in pipes, plates, etc. is determined using ultrasound; this method is often used in testing corrosion of tanks and pipelines.</p>
+                    <div class="image-gallery">
+                        <div class="gallery-image">
+                            <img src="images/MatjaTrashesisMurit/1.png" alt="Wall Thickness Measurement">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-fill-drip"></i>
+                    </div>
+                    <h3 data-translate="service4_title">Penetrant Inspection (PT)</h3>
+                    <p data-translate="service4_desc">This method is based on the use of capillary properties of liquids. A defect is manifested through the formation of a high-contrast optical indicator image.</p>
+                    <div class="image-gallery">
+                        <div class="gallery-image">
+                            <img src="images/InspektimiMeNgjyra/1.png" alt="Penetrant Inspection">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-magnet"></i>
+                    </div>
+                    <h3 data-translate="service5_title">Magnetic Particle Testing (MT)</h3>
+                    <p data-translate="service5_desc">Magnetic testing uses the principle of interruption of magnetic field lines, which is observed whenever the surface integrity of a magnetized object is compromised.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 data-translate="service6_title">Visual Inspection (VT)</h3>
+                    <p data-translate="service6_desc">Visual inspection methods based on the use of various optical devices. This increases the perception and sensitivity of the human eye.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3 data-translate="service7_title">Leak Testing Methods</h3>
+                    <p data-translate="service7_desc">Leak testing enables detection of hole defects and testing of products or systems under high parameters.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-weight-hanging"></i>
+                    </div>
+                    <h3 data-translate="service8_title">Hardness Testing</h3>
+                    <p data-translate="service8_desc">Hardness measurement based on the results of mechanical interaction between two solid bodies.</p>
+                    <div class="image-gallery">
+                        <div class="gallery-image">
+                            <img src="images/TestimiMatjesForsis/1.png" alt="Hardness Testing">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3 data-translate="service9_title">Microstructure Analysis</h3>
+                    <p data-translate="service9_desc">This method involves visualization and evaluation of microstructures of metals, pipes, plates, etc.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title" data-translate="how_it_works">How It Works</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 data-translate="step1">Contact Us</h3>
+                    <p data-translate="step1_desc">Get in touch to discuss your needs and schedule inspection.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 data-translate="step2">On-Site Inspection</h3>
+                    <p data-translate="step2_desc">Our certified technicians conduct thorough testing at your location.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 data-translate="step3">Detailed Report</h3>
+                    <p data-translate="step3_desc">Receive comprehensive report with findings and recommendations.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 data-translate="step4">Certification</h3>
+                    <p data-translate="step4_desc">Get official certification for your system safety.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title" data-translate="projects_title">Completed Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/DisaNgaProjektet/1.png" alt="Relux-Llapnaselle (Prishtine)">
+                    </div>
+                    <div class="project-info">
+                        <h3>Relux-Llapnaselle (Prishtine)</h3>
+                        <p data-translate="project1_desc">Pressure vessel inspection and testing</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/DisaNgaProjektet/2.png" alt="Fabrika 'Drena'-Skenderaj">
+                    </div>
+                    <div class="project-info">
+                        <h3>Fabrika "Drena"-Skenderaj</h3>
+                        <p data-translate="project2_desc">Industrial equipment inspection</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/DisaNgaProjektet/3.png" alt="'Ballkan'-Suharekë">
+                    </div>
+                    <div class="project-info">
+                        <h3>"Ballkan"-Suharekë</h3>
+                        <p data-translate="project3_desc">Pipeline testing and certification</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/DisaNgaProjektet/4.png" alt="'Fruteks'-Gelance,Suhareke">
+                    </div>
+                    <div class="project-info">
+                        <h3>"Fruteks"-Gelance,Suhareke</h3>
+                        <p data-translate="project4_desc">Equipment testing and certification</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/DisaNgaProjektet/5.png" alt="Spitali –Gjilan">
+                    </div>
+                    <div class="project-info">
+                        <h3>Spitali –Gjilan</h3>
+                        <p data-translate="project5_desc">Medical facility inspection</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/DisaNgaProjektet/6.png" alt="Gypat e Avulluesit nga Kosova B-Termokos">
+                    </div>
+                    <div class="project-info">
+                        <h3>Gypat e Avulluesit nga Kosova B-Termokos</h3>
+                        <p data-translate="project6_desc">Steam pipes inspection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title" data-translate="contact_title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 data-translate="contact_info">Get In Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p>lumi652000@yahoo.de</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <p>+38348731363</p>
+                                <p>+38344275327</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p data-translate="contact_address">Kosovo</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accreditation">
+                        <h3 data-translate="accreditation_title">Accreditation Certificate</h3>
+                        <div class="certificate-image">
+                            <img src="images/akreditimi.png" alt="Accreditation Certificate" style="max-width: 300px; border: 1px solid #ddd; padding: 10px; background: white;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" data-translate="form_name">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" data-translate="form_email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" data-translate="form_phone">Phone</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" data-translate="form_message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn" data-translate="form_submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-translate="footer_about">About Kontroll Test</h3>
+                    <p data-translate="footer_about_text">Professional non-destructive testing and inspection services with 18+ years of experience.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-translate="footer_services">Our Services</h3>
+                    <a href="#services" data-translate="service1_title">Radiographic Methods (RT)</a>
+                    <a href="#services" data-translate="service2_title">Ultrasonic Testing (UT)</a>
+                    <a href="#services" data-translate="service3_title">Wall Thickness Measurement</a>
+                    <a href="#services" data-translate="service4_title">Penetrant Inspection (PT)</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-translate="footer_contact">Contact Info</h3>
+                    <p><i class="fas fa-envelope"></i> lumi652000@yahoo.de</p>
+                    <p><i class="fas fa-phone"></i> +38348731363</p>
+                    <p><i class="fas fa-phone"></i> +38344275327</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Kontroll Test SH.P.K. <span data-translate="footer_rights">All rights reserved</span>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            });
+        });
+        
+        // Language Switching
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const mobileLangButtons = document.querySelectorAll('.mobile-lang-btn');
+        let currentLang = 'en';
+        
+        // Translation data
+        const translations = {
+            en: {
+                // Navigation
+                "home": "Home",
+                "about": "About Us",
+                "services": "Services",
+                "projects": "Projects",
+                "contact": "Contact",
+                
+                // Hero Section
+                "hero_title": "Professional Inspection & Testing Services",
+                "hero_subtitle": "Ensuring safety and compliance through expert inspection and testing",
+                "hero_cta": "Request Inspection",
+                
+                // About Section
+                "about_title": "About Us",
+                "about_heading": "SH.P.K. \"Kontroll Test\"",
+                "about_text1": "is a company that offers non-destructive material testing services in Kosovo (NDT) with X-ray RT2, Ultrasonic UT2, Penetrant PT2, Magnetic Flux MT2, Visual Inspection PT2 methods. With personnel certified according to ISO EN 1712 standard.",
+                "about_text2": "With 18 years of experience in the field of Pressure Vessel Inspections, Accredited by DAK, according to Standard SK EN ISO/IEC 17020. As an Authorized Body for conformity assessment, including calibration, certification and periodic controls of pressure equipment and installations.",
+                "about_cta": "Our Services",
+                
+                // Services Section
+                "services_title": "Our Services",
+                "service1_title": "Radiographic Methods (RT)",
+                "service1_desc": "Radiographic testing methods based on irradiating welds, details, etc. with X-rays, on pipes, metal plates, etc.",
+                "service2_title": "Ultrasonic Testing (UT)",
+                "service2_desc": "Ultrasonic testing of welded joints in pipes, plates, shafts, axes, etc. in material thickness up to 5 m.",
+                "service3_title": "Wall Thickness Measurement",
+                "service3_desc": "Wall thickness in pipes, plates, etc. is determined using ultrasound; this method is often used in testing corrosion of tanks and pipelines.",
+                "service4_title": "Penetrant Inspection (PT)",
+                "service4_desc": "This method is based on the use of capillary properties of liquids. A defect is manifested through the formation of a high-contrast optical indicator image.",
+                "service5_title": "Magnetic Particle Testing (MT)",
+                "service5_desc": "Magnetic testing uses the principle of interruption of magnetic field lines, which is observed whenever the surface integrity of a magnetized object is compromised.",
+                "service6_title": "Visual Inspection (VT)",
+                "service6_desc": "Visual inspection methods based on the use of various optical devices. This increases the perception and sensitivity of the human eye.",
+                "service7_title": "Leak Testing Methods",
+                "service7_desc": "Leak testing enables detection of hole defects and testing of products or systems under high parameters.",
+                "service8_title": "Hardness Testing",
+                "service8_desc": "Hardness measurement based on the results of mechanical interaction between two solid bodies.",
+                "service9_title": "Microstructure Analysis",
+                "service9_desc": "This method involves visualization and evaluation of microstructures of metals, pipes, plates, etc.",
+                
+                // How It Works Section
+                "how_it_works": "How It Works",
+                "step1": "Contact Us",
+                "step1_desc": "Get in touch to discuss your needs and schedule inspection.",
+                "step2": "On-Site Inspection",
+                "step2_desc": "Our certified technicians conduct thorough testing at your location.",
+                "step3": "Detailed Report",
+                "step3_desc": "Receive comprehensive report with findings and recommendations.",
+                "step4": "Certification",
+                "step4_desc": "Get official certification for your system safety.",
+                
+                // Projects Section
+                "projects_title": "Completed Projects",
+                "project1_desc": "Pressure vessel inspection and testing",
+                "project2_desc": "Industrial equipment inspection",
+                "project3_desc": "Pipeline testing and certification",
+                "project4_desc": "Equipment testing and certification",
+                "project5_desc": "Medical facility inspection",
+                "project6_desc": "Steam pipes inspection",
+                
+                // Contact Section
+                "contact_title": "Contact Us",
+                "contact_info": "Get In Touch",
+                "contact_address": "Kosovo",
+                "accreditation_title": "Accreditation Certificate",
+                "form_name": "Name",
+                "form_email": "Email",
+                "form_phone": "Phone",
+                "form_message": "Message",
+                "form_submit": "Send Message",
+                
+                // Footer
+                "footer_about": "About Kontroll Test",
+                "footer_about_text": "Professional non-destructive testing and inspection services with 18+ years of experience.",
+                "footer_services": "Our Services",
+                "footer_contact": "Contact Info",
+                "footer_rights": "All rights reserved"
+            },
+            de: {
+                // Navigation
+                "home": "Startseite",
+                "about": "Über Uns",
+                "services": "Dienstleistungen",
+                "projects": "Projekte",
+                "contact": "Kontakt",
+                
+                // Hero Section
+                "hero_title": "Professionelle Inspektions- und Prüfdienste",
+                "hero_subtitle": "Sicherheit und Konformität durch fachkundige Inspektion und Prüfung gewährleisten",
+                "hero_cta": "Inspektion anfordern",
+                
+                // About Section
+                "about_title": "Über Uns",
+                "about_heading": "SH.P.K. \"Kontroll Test\"",
+                "about_text1": "ist ein Unternehmen, das zerstörungsfreie Materialprüfdienstleistungen im Kosovo (NDT) mit Röntgenstrahlen RT2, Ultraschall UT2, Eindringmittel PT2, Magnetfluss MT2, visueller Inspektion PT2 anbietet. Mit Personal, das nach ISO EN 1712 Standard zertifiziert ist.",
+                "about_text2": "Mit 18 Jahren Erfahrung im Bereich der Druckbehälterinspektionen, akkreditiert von DAK, gemäß Standard SK EN ISO/IEC 17020. Als autorisierte Stelle für die Konformitätsbewertung, einschließlich Kalibrierung, Zertifizierung und periodischer Kontrollen von Druckgeräten und -anlagen.",
+                "about_cta": "Unsere Dienstleistungen",
+                
+                // Services Section
+                "services_title": "Unsere Dienstleistungen",
+                "service1_title": "Radiografische Methoden (RT)",
+                "service1_desc": "Radiografische Prüfverfahren basierend auf der Bestrahlung von Schweißnähten, Details usw. mit Röntgenstrahlen, an Rohren, Metallplatten usw.",
+                "service2_title": "Ultraschallprüfung (UT)",
+                "service2_desc": "Ultraschallprüfung von Schweißverbindungen in Rohren, Platten, Wellen, Achsen usw. in Materialstärken bis zu 5 m.",
+                "service3_title": "Wanddickenmessung",
+                "service3_desc": "Die Wanddicke in Rohren, Platten usw. wird mit Ultraschall bestimmt; diese Methode wird häufig bei der Korrosionsprüfung von Tanks und Pipelines eingesetzt.",
+                "service4_title": "Eindringprüfung (PT)",
+                "service4_desc": "Dieses Verfahren basiert auf der Verwendung der Kapillareigenschaften von Flüssigkeiten. Ein Defekt manifestiert sich durch die Bildung eines hochkontrastreichen optischen Indikatorbildes.",
+                "service5_title": "Magnetpulverprüfung (MT)",
+                "service5_desc": "Die magnetische Prüfung nutzt das Prinzip der Unterbrechung von Magnetfeldlinien, die beobachtet wird, wenn die Oberflächenintegrität eines magnetisierten Objekts beeinträchtigt ist.",
+                "service6_title": "Visuelle Inspektion (VT)",
+                "service6_desc": "Visuelle Inspektionsmethoden basierend auf der Verwendung verschiedener optischer Geräte. Dies erhöht die Wahrnehmung und Empfindlichkeit des menschlichen Auges.",
+                "service7_title": "Leckprüfverfahren",
+                "service7_desc": "Die Leckprüfung ermöglicht die Erkennung von Lochfehlern und die Prüfung von Produkten oder Systemen unter hohen Parametern.",
+                "service8_title": "Härteprüfung",
+                "service8_desc": "Härtemessung basierend auf den Ergebnissen der mechanischen Wechselwirkung zwischen zwei Festkörpern.",
+                "service9_title": "Mikrostrukturanalyse",
+                "service9_desc": "Dieses Verfahren umfasst die Visualisierung und Bewertung von Mikrostrukturen von Metallen, Rohren, Platten usw.",
+                
+                // How It Works Section
+                "how_it_works": "Wie es funktioniert",
+                "step1": "Kontaktieren Sie uns",
+                "step1_desc": "Nehmen Sie Kontakt auf, um Ihre Anforderungen zu besprechen und eine Inspektion zu planen.",
+                "step2": "Vor-Ort-Inspektion",
+                "step2_desc": "Unsere zertifizierten Techniker führen gründliche Tests an Ihrem Standort durch.",
+                "step3": "Detaillierter Bericht",
+                "step3_desc": "Erhalten Sie einen umfassenden Bericht mit Ergebnissen und Empfehlungen.",
+                "step4": "Zertifizierung",
+                "step4_desc": "Erhalten Sie eine offizielle Zertifizierung für die Sicherheit Ihres Systems.",
+                
+                // Projects Section
+                "projects_title": "Abgeschlossene Projekte",
+                "project1_desc": "Druckbehälterinspektion und -prüfung",
+                "project2_desc": "Industrieausrüstungsinspektion",
+                "project3_desc": "Pipeline-Prüfung und Zertifizierung",
+                "project4_desc": "Ausrüstungsprüfung und Zertifizierung",
+                "project5_desc": "Medizinische Einrichtungsinspektion",
+                "project6_desc": "Dampfrohrinspektion",
+                
+                // Contact Section
+                "contact_title": "Kontaktieren Sie Uns",
+                "contact_info": "Kontakt Aufnehmen",
+                "contact_address": "Kosovo",
+                "accreditation_title": "Akkreditierungszertifikat",
+                "form_name": "Name",
+                "form_email": "E-Mail",
+                "form_phone": "Telefon",
+                "form_message": "Nachricht",
+                "form_submit": "Nachricht Senden",
+                
+                // Footer
+                "footer_about": "Über Kontroll Test",
+                "footer_about_text": "Professionelle zerstörungsfreie Prüf- und Inspektionsdienstleistungen mit mehr als 18 Jahren Erfahrung.",
+                "footer_services": "Unsere Dienstleistungen",
+                "footer_contact": "Kontaktinformationen",
+                "footer_rights": "Alle Rechte vorbehalten"
+            },
+            sq: {
+                // Navigation
+                "home": "Kryefaqja",
+                "about": "Rreth Nesh",
+                "services": "Shërbimet",
+                "projects": "Projektet",
+                "contact": "Kontakt",
+                
+                // Hero Section
+                "hero_title": "Shërbime Profesionale të Inspektimit dhe Testimit",
+                "hero_subtitle": "Sigurimi i sigurisë dhe përputhshmërisë përmes inspektimit dhe testimit të ekspertëve",
+                "hero_cta": "Kërko Inspektim",
+                
+                // About Section
+                "about_title": "Rreth Nesh",
+                "about_heading": "SH.P.K. \"Kontroll Test\"",
+                "about_text1": "është një kompani që ofron shërbime testimi të materialeve Pa Shkatërrim në Kosovë, (NDT) me Metoden e Rentgenit (X-ray) RT2, Ultrazë UT2, Penetrantë PT2, Magnetofluks MT2, Kontrolla Vizuale PT2. Me personel të certifikuar sipas Standardit ISO EN 1712.",
+                "about_text2": "Me përvojë 18 vjeҫare në fushën e Inspektimeve të enëve nën Presion, të Akredituar nga DAK, sipas Standardit SK EN ISO/IEC 17020. Si Trup i Autorizuar për vlerësimin e konformitetit, përfshirë kalibrimin, certifikimin dhe kontrollet periodike të pajisjeve dhe instalimeve nën presion.",
+                "about_cta": "Shërbimet Tona",
+                
+                // Services Section
+                "services_title": "Shërbimet Tona",
+                "service1_title": "Metodat Radiografike (RT)",
+                "service1_desc": "Metodat e testimit radiografik bazohen në rrezatimin e Saldimeve, Detaleve etj. me Rentgen (rrezet X), si në gypa, pllaka metalike etj.",
+                "service2_title": "Kontrollimi me Ultrazë (UT)",
+                "service2_desc": "Kontrollimi me ultrazë i lidhjeve të salduara në gypa, pllaka, boshte, akse etj. në trashësi të materialit deri në 5 m.",
+                "service3_title": "Matja e Trashësisë së Murit",
+                "service3_desc": "Trashësia e murit në gypa, pllaka etj. përcaktohet duke përdorur ultrazërin; kjo metodë përdoret shpesh në testimin e korrozionit të rezervuarëve dhe tubacioneve.",
+                "service4_title": "Inspektimi me Ngjyra Penetruese (PT)",
+                "service4_desc": "Kjo metodë bazohet në përdorimin e vetive kapilare të lëngjeve. Një defekt manifestohet nëpërmjet formimit të një imazhi tregues me kontrast të lartë optik.",
+                "service5_title": "Testimi i Pluhurit Magnetik (MT)",
+                "service5_desc": "Testimi magnetik përdor parimin e ndërprerjes së vijave të fushës magnetike, i cili vërehet sa herë që integriteti sipërfaqësor i një objekti të magnetizuar është i kompromentuar.",
+                "service6_title": "Inspektimi Vizual (VT)",
+                "service6_desc": "Metodat e inspektimit vizual bazohen në përdorimin e pajisjeve të ndryshme optike. Kjo rrit perceptimin dhe ndjeshmërinë e syrit të njeriut.",
+                "service7_title": "Metodat e Testimit të Rrjedhjeve",
+                "service7_desc": "Testimi i rrjedhjeve mundëson zbulimin e defekteve të vrimave dhe testimin e produkteve ose sistemeve nën parametra të lartë.",
+                "service8_title": "Testimi-Matja e Fortësisë",
+                "service8_desc": "Matja e fortësisë bazohet në rezultatet e bashkëveprimit mekanik midis dy trupave të ngurtë.",
+                "service9_title": "Analiza e Mikrostrukturës-Metalografia",
+                "service9_desc": "Kjo metodë përfshin vizualizimin dhe vlerësimin e mikrostrukturave të metaleve, gypave, pllakave etj.",
+                
+                // How It Works Section
+                "how_it_works": "Si Funksionon",
+                "step1": "Na Kontaktoni",
+                "step1_desc": "Lidhuni për të diskutuar nevojat tuaja dhe planifikoni inspektimin.",
+                "step2": "Inspektim në Vend",
+                "step2_desc": "Teknikët tanë të certifikuar kryejnë testim të plotë në vendndodhjen tuaj.",
+                "step3": "Raport i Detajuar",
+                "step3_desc": "Merrni raport të plotë me gjetjet dhe rekomandimet.",
+                "step4": "Certifikim",
+                "step4_desc": "Merrni certifikatën zyrtare për sigurinë e sistemit tuaj.",
+                
+                // Projects Section
+                "projects_title": "Projektet e Realizuara",
+                "project1_desc": "Inspektimi dhe testimi i enëve nën presion",
+                "project2_desc": "Inspektimi i pajisjeve industriale",
+                "project3_desc": "Testimi dhe certifikimi i tubacioneve",
+                "project4_desc": "Testimi dhe certifikimi i pajisjeve",
+                "project5_desc": "Inspektimi i objektit shëndetësor",
+                "project6_desc": "Inspektimi i gypave të avullit",
+                
+                // Contact Section
+                "contact_title": "Na Kontaktoni",
+                "contact_info": "Lidhuni me Ne",
+                "contact_address": "Kosovë",
+                "accreditation_title": "Certifikata e Akreditimit",
+                "form_name": "Emri",
+                "form_email": "Email",
+                "form_phone": "Telefoni",
+                "form_message": "Mesazhi",
+                "form_submit": "Dërgo Mesazhin",
+                
+                // Footer
+                "footer_about": "Rreth Kontroll Test",
+                "footer_about_text": "Shërbime profesionale të testimit dhe inspektimit pa shkatërrim me më shumë se 18 vjet përvojë.",
+                "footer_services": "Shërbimet Tona",
+                "footer_contact": "Informacione Kontakti",
+                "footer_rights": "Të gjitha të drejtat e rezervuara"
+            }
+        };
+        
+        // Language switching functionality for desktop
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.getAttribute('data-lang');
+                
+                // Update active button
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Update mobile buttons
+                mobileLangButtons.forEach(btn => {
+                    if (btn.getAttribute('data-lang') === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                // Update content
+                updateContent(lang);
+                currentLang = lang;
+            });
+        });
+        
+        // Language switching functionality for mobile
+        mobileLangButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const lang = button.getAttribute('data-lang');
+                
+                // Update active button
+                mobileLangButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Update desktop buttons
+                langButtons.forEach(btn => {
+                    if (btn.getAttribute('data-lang') === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                // Update content
+                updateContent(lang);
+                currentLang = lang;
+                
+                // Close mobile menu after language selection
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            });
+        });
+        
+        // Function to update content based on language
+        function updateContent(lang) {
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert(currentLang === 'en' ? 'Thank you for your message! We will contact you soon.' : 
+                  currentLang === 'de' ? 'Vielen Dank für Ihre Nachricht! Wir werden Sie bald kontaktieren.' :
+                  'Faleminderit për mesazhin tuaj! Do te ju kontaktojmë së shpejti.');
+            this.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Initialize with English
+        updateContent('en');
+    </script>
+</body>
+</html>

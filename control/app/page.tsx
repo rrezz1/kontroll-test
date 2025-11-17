@@ -1,569 +1,262 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from 'react';
+import { Language, Translations } from '@/types';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import About from '@/components/About';
+import Services from '@/components/Services';
+import Process from '@/components/Process';
+import Projects from '@/components/Projects';
+import Accreditation from '@/components/Accreditation';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
+import Activities from '@/components/Activities';
 
-// Define types
-type Language = 'en' | 'sq';
-type TranslationKey = 
-  | 'home' | 'about' | 'services' | 'contact'
-  | 'title' | 'subtitle' | 'heroText' | 'cta'
-  | 'ourServices' | 'service1Title' | 'service1Desc' | 'service2Title' | 'service2Desc'
-  | 'service3Title' | 'service3Desc' | 'service4Title' | 'service4Desc' | 'service5Title'
-  | 'service5Desc' | 'service6Title' | 'service6Desc' | 'whyChooseUs' | 'feature1'
-  | 'feature1Desc' | 'feature2' | 'feature2Desc' | 'feature3' | 'feature3Desc'
-  | 'feature4' | 'feature4Desc' | 'aboutUs' | 'aboutText' | 'ourMission' | 'missionText'
-  | 'ourVision' | 'visionText' | 'statistics' | 'projectsCompleted' | 'happyClients'
-  | 'yearsExperience' | 'certifiedTechnicians' | 'howItWorks' | 'step1' | 'step1Desc'
-  | 'step2' | 'step2Desc' | 'step3' | 'step3Desc' | 'step4' | 'step4Desc'
-  | 'industriesWeServe' | 'residential' | 'residentialDesc' | 'commercial'
-  | 'commercialDesc' | 'industrial' | 'industrialDesc' | 'finalCta' | 'finalCtaText'
-  | 'requestInspection' | 'contactTitle' | 'address' | 'phone' | 'email' | 'hours'
-  | 'rights' | 'tagline';
 
-type Translations = {
-  en: Record<TranslationKey, string>;
-  sq: Record<TranslationKey, string>;
+
+const translations: Translations = {
+  en: {
+    // Navigation
+    home: "Home",
+    about: "About Us",
+    services: "Services",
+    projects: "Projects",
+    contact: "Contact",
+     // Activities Section
+    activities_title: "Our Activities",
+    activities_intro: "What services do we offer? 'KONTROLL TEST' sh.p.k. performs technical inspection of high-risk installations in accordance with:",
+    regulations_title: "Regulations and Laws",
+    gln_systems: "GLN Systems and Components",
+    // Hero Section
+    hero_title: "Professional Inspection & Testing Services",
+    hero_subtitle: "Ensuring safety and compliance through expert inspection and testing",
+    hero_cta: "Request Inspection",
+    
+    // About Section
+    about_title: "About Us",
+    about_heading: "SH.P.K. \"Kontroll Test\"",
+    about_text1: "is a company that offers non-destructive material testing services in Kosovo (NDT) with X-ray RT2, Ultrasonic UT2, Penetrant PT2, Magnetic Flux MT2, Visual Inspection PT2 methods. With personnel certified according to ISO EN 1712 standard.",
+    about_text2: "With 18 years of experience in the field of Pressure Vessel Inspections, Accredited by DAK, according to Standard SK EN ISO/IEC 17020. As an Authorized Body for conformity assessment, including calibration, certification and periodic controls of pressure equipment and installations.",
+    about_cta: "Our Services",
+    
+    // Services Section
+    services_title: "Our Services",
+    service1_title: "Radiographic Methods (RT)",
+    service1_desc: "Radiographic testing methods based on irradiating welds, details, etc. with X-rays, on pipes, metal plates, etc.",
+    service2_title: "Ultrasonic Testing (UT)",
+    service2_desc: "Ultrasonic testing of welded joints in pipes, plates, shafts, axes, etc. in material thickness up to 5 m.",
+    service3_title: "Wall Thickness Measurement",
+    service3_desc: "Wall thickness in pipes, plates, etc. is determined using ultrasound; this method is often used in testing corrosion of tanks and pipelines.",
+    service4_title: "Penetrant Inspection (PT)",
+    service4_desc: "This method is based on the use of capillary properties of liquids. A defect is manifested through the formation of a high-contrast optical indicator image.",
+    service5_title: "Magnetic Particle Testing (MT)",
+    service5_desc: "Magnetic testing uses the principle of interruption of magnetic field lines, which is observed whenever the surface integrity of a magnetized object is compromised.",
+    service6_title: "Visual Inspection (VT)",
+    service6_desc: "Visual inspection methods based on the use of various optical devices. This increases the perception and sensitivity of the human eye.",
+    service7_title: "Leak Testing Methods",
+    service7_desc: "Leak testing enables detection of hole defects and testing of products or systems under high parameters.",
+    service8_title: "Hardness Testing",
+    service8_desc: "Hardness measurement based on the results of mechanical interaction between two solid bodies.",
+    service9_title: "Microstructure Analysis",
+    service9_desc: "This method involves visualization and evaluation of microstructures of metals, pipes, plates, etc.",
+    
+    // How It Works Section
+    how_it_works: "How It Works",
+    step1: "Contact Us",
+    step1_desc: "Get in touch to discuss your needs and schedule inspection.",
+    step2: "On-Site Inspection",
+    step2_desc: "Our certified technicians conduct thorough testing at your location.",
+    step3: "Detailed Report",
+    step3_desc: "Receive comprehensive report with findings and recommendations.",
+    step4: "Certification",
+    step4_desc: "Get official certification for your system safety.",
+    
+    // Projects Section
+    projects_title: "Completed Projects",
+    project1_desc: "Pressure vessel inspection and testing",
+    project2_desc: "Industrial equipment inspection",
+    project3_desc: "Pipeline testing and certification",
+    project4_desc: "Equipment testing and certification",
+    project5_desc: "Medical facility inspection",
+    project6_desc: "Steam pipes inspection",
+    
+    // Contact Section
+    contact_title: "Contact Us",
+    contact_info: "Get In Touch",
+    contact_address: "Kosovo",
+    accreditation_title: "Accreditation Certificate",
+    form_name: "Name",
+    form_email: "Email",
+    form_phone: "Phone",
+    form_message: "Message",
+    form_submit: "Send Message",
+    
+    // Footer
+    footer_about: "About Kontroll Test",
+    footer_about_text: "Professional non-destructive testing and inspection services with 18+ years of experience.",
+    footer_services: "Our Services",
+    footer_contact: "Contact Info",
+    footer_rights: "All rights reserved"
+  },
+  de: {
+     // Activities Section
+    activities_title: "Unsere Aktivitäten",
+    activities_intro: "Welche Dienstleistungen bieten wir an? 'KONTROLL TEST' sh.p.k. führt technische Inspektionen von Hochrisikoanlagen durch in Übereinstimmung mit:",
+    regulations_title: "Vorschriften und Gesetze",
+    gln_systems: "GLN-Systeme und Komponenten",
+    // German translations (same structure as above)
+    home: "Startseite",
+    about: "Über Uns",
+    services: "Dienstleistungen",
+    projects: "Projekte",
+    contact: "Kontakt",
+    hero_title: "Professionelle Inspektions- und Prüfdienste",
+    hero_subtitle: "Sicherheit und Konformität durch fachkundige Inspektion und Prüfung gewährleisten",
+    hero_cta: "Inspektion anfordern",
+    about_title: "Über Uns",
+    about_heading: "SH.P.K. \"Kontroll Test\"",
+    about_text1: "ist ein Unternehmen, das zerstörungsfreie Materialprüfdienstleistungen im Kosovo (NDT) mit Röntgenstrahlen RT2, Ultraschall UT2, Eindringmittel PT2, Magnetfluss MT2, visueller Inspektion PT2 anbietet. Mit Personal, das nach ISO EN 1712 Standard zertifiziert ist.",
+    about_text2: "Mit 18 Jahren Erfahrung im Bereich der Druckbehälterinspektionen, akkreditiert von DAK, gemäß Standard SK EN ISO/IEC 17020. Als autorisierte Stelle für die Konformitätsbewertung, einschließlich Kalibrierung, Zertifizierung und periodischer Kontrollen von Druckgeräten und -anlagen.",
+    about_cta: "Unsere Dienstleistungen",
+    services_title: "Unsere Dienstleistungen",
+    service1_title: "Radiografische Methoden (RT)",
+    service1_desc: "Radiografische Prüfverfahren basierend auf der Bestrahlung von Schweißnähten, Details usw. mit Röntgenstrahlen, an Rohren, Metallplatten usw.",
+    service2_title: "Ultraschallprüfung (UT)",
+    service2_desc: "Ultraschallprüfung von Schweißverbindungen in Rohren, Platten, Wellen, Achsen usw. in Materialstärken bis zu 5 m.",
+    service3_title: "Wanddickenmessung",
+    service3_desc: "Die Wanddicke in Rohren, Platten usw. wird mit Ultraschall bestimmt; diese Methode wird häufig bei der Korrosionsprüfung von Tanks und Pipelines eingesetzt.",
+    service4_title: "Eindringprüfung (PT)",
+    service4_desc: "Dieses Verfahren basiert auf der Verwendung der Kapillareigenschaften von Flüssigkeiten. Ein Defekt manifestiert sich durch die Bildung eines hochkontrastreichen optischen Indikatorbildes.",
+    service5_title: "Magnetpulverprüfung (MT)",
+    service5_desc: "Die magnetische Prüfung nutzt das Prinzip der Unterbrechung von Magnetfeldlinien, die beobachtet wird, wenn die Oberflächenintegrität eines magnetisierten Objekts beeinträchtigt ist.",
+    service6_title: "Visuelle Inspektion (VT)",
+    service6_desc: "Visuelle Inspektionsmethoden basierend auf der Verwendung verschiedener optischer Geräte. Dies erhöht die Wahrnehmung und Empfindlichkeit des menschlichen Auges.",
+    service7_title: "Leckprüfverfahren",
+    service7_desc: "Die Leckprüfung ermöglicht die Erkennung von Lochfehlern und die Prüfung von Produkten oder Systemen unter hohen Parametern.",
+    service8_title: "Härteprüfung",
+    service8_desc: "Härtemessung basierend auf den Ergebnissen der mechanischen Wechselwirkung zwischen zwei Festkörpern.",
+    service9_title: "Mikrostrukturanalyse",
+    service9_desc: "Dieses Verfahren umfasst die Visualisierung und Bewertung von Mikrostrukturen von Metallen, Rohren, Platten usw.",
+    how_it_works: "Wie es funktioniert",
+    step1: "Kontaktieren Sie uns",
+    step1_desc: "Nehmen Sie Kontakt auf, um Ihre Anforderungen zu besprechen und eine Inspektion zu planen.",
+    step2: "Vor-Ort-Inspektion",
+    step2_desc: "Unsere zertifizierten Techniker führen gründliche Tests an Ihrem Standort durch.",
+    step3: "Detaillierter Bericht",
+    step3_desc: "Erhalten Sie einen umfassenden Bericht mit Ergebnissen und Empfehlungen.",
+    step4: "Zertifizierung",
+    step4_desc: "Erhalten Sie eine offizielle Zertifizierung für die Sicherheit Ihres Systems.",
+    projects_title: "Abgeschlossene Projekte",
+    project1_desc: "Druckbehälterinspektion und -prüfung",
+    project2_desc: "Industrieausrüstungsinspektion",
+    project3_desc: "Pipeline-Prüfung und Zertifizierung",
+    project4_desc: "Ausrüstungsprüfung und Zertifizierung",
+    project5_desc: "Medizinische Einrichtungsinspektion",
+    project6_desc: "Dampfrohrinspektion",
+    contact_title: "Kontaktieren Sie Uns",
+    contact_info: "Kontakt Aufnehmen",
+    contact_address: "Kosovo",
+    accreditation_title: "Akkreditierungszertifikat",
+    form_name: "Name",
+    form_email: "E-Mail",
+    form_phone: "Telefon",
+    form_message: "Nachricht",
+    form_submit: "Nachricht Senden",
+    footer_about: "Über Kontroll Test",
+    footer_about_text: "Professionelle zerstörungsfreie Prüf- und Inspektionsdienstleistungen mit mehr als 18 Jahren Erfahrung.",
+    footer_services: "Unsere Dienstleistungen",
+    footer_contact: "Kontaktinformationen",
+    footer_rights: "Alle Rechte vorbehalten"
+  },
+  sq: {
+      // Activities Section
+    activities_title: "Aktivitetet tona",
+    activities_intro: "Çfarë shërbimesh ofrojmë? 'KONTROLL TEST' sh.p.k. kryen inspektimin teknik të instalimeve me rrezikshmëri të lartë në përputhje me:",
+    regulations_title: "Rregulloret dhe Ligjet",
+    gln_systems: "Sistemet dhe Komponentët e GLN-së",
+    // Albanian translations (same structure as above)
+    home: "Kryefaqja",
+    about: "Rreth Nesh",
+    services: "Shërbimet",
+    projects: "Projektet",
+    contact: "Kontakt",
+    hero_title: "Shërbime Profesionale të Inspektimit dhe Testimit",
+    hero_subtitle: "Sigurimi i sigurisë dhe përputhshmërisë përmes inspektimit dhe testimit të ekspertëve",
+    hero_cta: "Kërko Inspektim",
+    about_title: "Rreth Nesh",
+    about_heading: "SH.P.K. \"Kontroll Test\"",
+    about_text1: "është një kompani që ofron shërbime testimi të materialeve Pa Shkatërrim në Kosovë, (NDT) me Metoden e Rentgenit (X-ray) RT2, Ultrazë UT2, Penetrantë PT2, Magnetofluks MT2, Kontrolla Vizuale PT2. Me personel të certifikuar sipas Standardit ISO EN 1712.",
+    about_text2: "Me përvojë 18 vjeҫare në fushën e Inspektimeve të enëve nën Presion, të Akredituar nga DAK, sipas Standardit SK EN ISO/IEC 17020. Si Trup i Autorizuar për vlerësimin e konformitetit, përfshirë kalibrimin, certifikimin dhe kontrollet periodike të pajisjeve dhe instalimeve nën presion.",
+    about_cta: "Shërbimet Tona",
+    services_title: "Shërbimet Tona",
+    service1_title: "Metodat Radiografike (RT)",
+    service1_desc: "Metodat e testimit radiografik bazohen në rrezatimin e Saldimeve, Detaleve etj. me Rentgen (rrezet X), si në gypa, pllaka metalike etj.",
+    service2_title: "Kontrollimi me Ultrazë (UT)",
+    service2_desc: "Kontrollimi me ultrazë i lidhjeve të salduara në gypa, pllaka, boshte, akse etj. në trashësi të materialit deri në 5 m.",
+    service3_title: "Matja e Trashësisë së Murit",
+    service3_desc: "Trashësia e murit në gypa, pllaka etj. përcaktohet duke përdorur ultrazërin; kjo metodë përdoret shpesh në testimin e korrozionit të rezervuarëve dhe tubacioneve.",
+    service4_title: "Inspektimi me Ngjyra Penetruese (PT)",
+    service4_desc: "Kjo metodë bazohet në përdorimin e vetive kapilare të lëngjeve. Një defekt manifestohet nëpërmjet formimit të një imazhi tregues me kontrast të lartë optik.",
+    service5_title: "Testimi i Pluhurit Magnetik (MT)",
+    service5_desc: "Testimi magnetik përdor parimin e ndërprerjes së vijave të fushës magnetike, i cili vërehet sa herë që integriteti sipërfaqësor i një objekti të magnetizuar është i kompromentuar.",
+    service6_title: "Inspektimi Vizual (VT)",
+    service6_desc: "Metodat e inspektimit vizual bazohen në përdorimin e pajisjeve të ndryshme optike. Kjo rrit perceptimin dhe ndjeshmërinë e syrit të njeriut.",
+    service7_title: "Metodat e Testimit të Rrjedhjeve",
+    service7_desc: "Testimi i rrjedhjeve mundëson zbulimin e defekteve të vrimave dhe testimin e produkteve ose sistemeve nën parametra të lartë.",
+    service8_title: "Testimi-Matja e Fortësisë",
+    service8_desc: "Matja e fortësisë bazohet në rezultatet e bashkëveprimit mekanik midis dy trupave të ngurtë.",
+    service9_title: "Analiza e Mikrostrukturës-Metalografia",
+    service9_desc: "Kjo metodë përfshin vizualizimin dhe vlerësimin e mikrostrukturave të metaleve, gypave, pllakave etj.",
+    how_it_works: "Si Funksionon",
+    step1: "Na Kontaktoni",
+    step1_desc: "Lidhuni për të diskutuar nevojat tuaja dhe planifikoni inspektimin.",
+    step2: "Inspektim në Vend",
+    step2_desc: "Teknikët tanë të certifikuar kryejnë testim të plotë në vendndodhjen tuaj.",
+    step3: "Raport i Detajuar",
+    step3_desc: "Merrni raport të plotë me gjetjet dhe rekomandimet.",
+    step4: "Certifikim",
+    step4_desc: "Merrni certifikatën zyrtare për sigurinë e sistemit tuaj.",
+    projects_title: "Projektet e Realizuara",
+    project1_desc: "Inspektimi dhe testimi i enëve nën presion",
+    project2_desc: "Inspektimi i pajisjeve industriale",
+    project3_desc: "Testimi dhe certifikimi i tubacioneve",
+    project4_desc: "Testimi dhe certifikimi i pajisjeve",
+    project5_desc: "Inspektimi i objektit shëndetësor",
+    project6_desc: "Inspektimi i gypave të avullit",
+    contact_title: "Na Kontaktoni",
+    contact_info: "Lidhuni me Ne",
+    contact_address: "Kosovë",
+    accreditation_title: "Certifikata e Akreditimit",
+    form_name: "Emri",
+    form_email: "Email",
+    form_phone: "Telefoni",
+    form_message: "Mesazhi",
+    form_submit: "Dërgo Mesazhin",
+    footer_about: "Rreth Kontroll Test",
+    footer_about_text: "Shërbime profesionale të testimit dhe inspektimit pa shkatërrim me më shumë se 18 vjet përvojë.",
+    footer_services: "Shërbimet Tona",
+    footer_contact: "Informacione Kontakti",
+    footer_rights: "Të gjitha të drejtat e rezervuara"
+  }
 };
 
-// Header Component
-function Header({ language, setLanguage }: { language: Language; setLanguage: (lang: Language) => void }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  const translations = {
-    en: {
-      home: "Home",
-      about: "About Us",
-      services: "Services",
-      contact: "Contact"
-    },
-    sq: {
-      home: "Kryefaqja",
-      about: "Rreth Nesh",
-      services: "Shërbimet",
-      contact: "Kontakt"
-    }
-  };
-
-  const t = translations[language];
-
-  return (
-     <header className="header">
-      <div className="container">
-        <div className="header-content">
-          <div className="logo">
-            <h1>Control Test</h1>
-          </div>
-          
-          {/* Regular Navigation - Hidden on Mobile */}
-          <nav className="nav">
-            <a href="#home">{t.home}</a>
-            <a href="#about">{t.about}</a>
-            <a href="#services">{t.services}</a>
-            <a href="#contact">{t.contact}</a>
-          </nav>
-          
-          {/* Language Switcher - Visible on all screens */}
-          <div className="language-switcher">
-            <button 
-              onClick={() => setLanguage('en')} 
-              className={language === 'en' ? 'active' : ''}
-            >
-              EN
-            </button>
-            <button 
-              onClick={() => setLanguage('sq')} 
-              className={language === 'sq' ? 'active' : ''}
-            >
-              SQ
-            </button>
-          </div>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-// Footer Component
-function Footer({ language }: { language: Language }) {
-  const translations = {
-    en: {
-      about: "About Control Test",
-      aboutText: "Professional gas pipe control and testing services ensuring safety and compliance.",
-      quickLinks: "Quick Links",
-      contact: "Contact Info",
-      address: "123 Safety Street, Tirana",
-      phone: "+355 4X XXX XXXX",
-      email: "info@controltest.com",
-      rights: "All rights reserved.",
-      tagline: "Your safety is our priority"
-    },
-    sq: {
-      about: "Rreth Control Test",
-      aboutText: "Shërbime profesionale të kontrollit dhe testimit të cevave të gazit që sigurojnë siguri dhe përputhshmëri.",
-      quickLinks: "Lidhje të Shpejta",
-      contact: "Informacione Kontakti",
-      address: "Rruga e Sigurisë 123, Tiranë",
-      phone: "+355 4X XXX XXXX",
-      email: "info@controltest.com",
-      rights: "Të gjitha të drejtat e rezervuara.",
-      tagline: "Siguria juaj është prioriteti ynë"
-    }
-  };
-
-  const t = translations[language];
-
-  return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-content">
-          <div className="footer-section">
-            <h3>{t.about}</h3>
-            <p>{t.aboutText}</p>
-          </div>
-          
-          <div className="footer-section">
-            <h3>{t.quickLinks}</h3>
-            <p><a href="#home">{language === 'en' ? 'Home' : 'Kryefaqja'}</a></p>
-            <p><a href="#about">{language === 'en' ? 'About' : 'Rreth Nesh'}</a></p>
-            <p><a href="#services">{language === 'en' ? 'Services' : 'Shërbimet'}</a></p>
-            <p><a href="#contact">{language === 'en' ? 'Contact' : 'Kontakt'}</a></p>
-          </div>
-          
-          <div className="footer-section">
-            <h3>{t.contact}</h3>
-            <p>{t.address}</p>
-            <p>{t.phone}</p>
-            <p>{t.email}</p>
-          </div>
-        </div>
-        
-        <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Control Test. {t.rights}</p>
-          <p>{t.tagline}</p>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
-// ServiceCard Component
-function ServiceCard({ title, description, icon }: { title: string; description: string; icon: string }) {
-  return (
-    <div className="service-card">
-      <div className="service-icon">{icon}</div>
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </div>
-  );
-}
-// Counter Component
-function Counter({ target, suffix, duration = 2000 }: { target: number; suffix: string; duration?: number }) {
-  const [count, setCount] = useState(0);
-  const [hasStarted, setHasStarted] = useState(false);
-
-  useEffect(() => {
-    if (!hasStarted) {
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting && !hasStarted) {
-            setHasStarted(true);
-            let start = 0;
-            const increment = target / (duration / 16);
-            
-            const timer = setInterval(() => {
-              start += increment;
-              if (start >= target) {
-                setCount(target);
-                clearInterval(timer);
-              } else {
-                setCount(Math.floor(start));
-              }
-            }, 16);
-          }
-        },
-        { threshold: 0.3 }
-      );
-
-      const element = document.getElementById('about');
-      if (element) observer.observe(element);
-
-      return () => observer.disconnect();
-    }
-  }, [target, duration, hasStarted]);
-
-  return (
-    <>{count}{suffix}</>
-  );
-}
-
-// Main Home Component
 export default function Home() {
   const [language, setLanguage] = useState<Language>('en');
-  const sectionRefs = useRef<(HTMLElement | null)[]>([]);
-  const [counters, setCounters] = useState({
-    projects: 0,
-    clients: 0,
-    experience: 0,
-    technicians: 0
-  });
-  const [hasAnimated, setHasAnimated] = useState(false);
-
-  // Stats configuration
-  const statsConfig = {
-    projects: { target: 500, suffix: "+", duration: 2000 },
-    clients: { target: 98, suffix: "%", duration: 1500 },
-    experience: { target: 15, suffix: "+", duration: 1800 },
-    technicians: { target: 25, suffix: "+", duration: 1600 }
-  };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-visible');
-            
-            // Start counters when stats section becomes visible
-            if (entry.target.id === 'about' && !hasAnimated) {
-              startCounters();
-              setHasAnimated(true);
-            }
-          }
-        });
-      },
-      { threshold: 0.3 } // Increased threshold for better trigger
-    );
-    
-    // Observe the about section
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      observer.observe(aboutSection);
-    }
-    
-    return () => {
-      observer.disconnect();
-    };
-  }, [hasAnimated]);
-
-  const startCounters = () => {
-    Object.keys(statsConfig).forEach((key) => {
-      const { target, duration } = statsConfig[key as keyof typeof statsConfig];
-      animateCounter(key as keyof typeof counters, target, duration);
-    });
-  };
-
-  const animateCounter = (key: keyof typeof counters, target: number, duration: number) => {
-    let startTimestamp: number | null = null;
-    
-    const step = (timestamp: number) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      
-      // Easing function for smooth animation
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      const currentValue = Math.floor(easeOutQuart * target);
-      
-      setCounters(prev => ({
-        ...prev,
-        [key]: currentValue
-      }));
-      
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      }
-    };
-    
-    requestAnimationFrame(step);
-  };
-
-  const translations: Translations = {
-    en: {
-      home: "Home",
-      about: "About Us",
-      services: "Services",
-      contact: "Contact",
-      title: "Professional Gas Pipe Control Services",
-      subtitle: "Ensuring Safety Through Expert Inspection & Testing",
-      heroText: "We provide comprehensive gas pipe control and testing services for residential, commercial, and industrial applications. Our certified technicians ensure your gas systems are safe and compliant.",
-      cta: "Request Inspection",
-      ourServices: "Our Services",
-      service1Title: "Pressure Testing",
-      service1Desc: "Comprehensive pressure testing to verify pipe integrity and identify potential leaks.",
-      service2Title: "Visual Inspection",
-      service2Desc: "Thorough visual examination of gas pipes, connections, and installations.",
-      service3Title: "Leak Detection",
-      service3Desc: "Advanced leak detection using specialized equipment and techniques.",
-      service4Title: "Compliance Certification",
-      service4Desc: "Official certification confirming your gas system meets all safety standards.",
-      service5Title: "Emergency Services",
-      service5Desc: "24/7 emergency response for gas leaks and urgent situations.",
-      service6Title: "Preventive Maintenance",
-      service6Desc: "Regular maintenance programs to prevent issues before they occur.",
-      whyChooseUs: "Why Choose Control Test?",
-      feature1: "Certified Experts",
-      feature1Desc: "Highly trained and certified professionals with years of experience.",
-      feature2: "Advanced Technology",
-      feature2Desc: "Latest equipment for accurate and reliable results.",
-      feature3: "Quick Response",
-      feature3Desc: "Rapid response for inspections and emergencies.",
-      feature4: "Competitive Pricing",
-      feature4Desc: "Quality services at competitive, transparent prices.",
-      aboutUs: "About Control Test",
-      aboutText: "With over 15 years of experience, Control Test is the leading provider of gas pipe control services. Our commitment to safety and quality sets us apart.",
-      ourMission: "Our Mission",
-      missionText: "To ensure the highest level of safety in gas pipe systems through professional inspection and certification.",
-      ourVision: "Our Vision",
-      visionText: "To become the most trusted name in gas pipe control services.",
-      statistics: "Our Numbers Speak",
-      projectsCompleted: "Projects Completed",
-      happyClients: "Happy Clients",
-      yearsExperience: "Years Experience",
-      certifiedTechnicians: "Certified Technicians",
-      howItWorks: "How It Works",
-      step1: "Contact Us",
-      step1Desc: "Get in touch to discuss your needs and schedule inspection.",
-      step2: "On-Site Inspection",
-      step2Desc: "Our certified technicians conduct thorough testing at your location.",
-      step3: "Detailed Report",
-      step3Desc: "Receive comprehensive report with findings and recommendations.",
-      step4: "Certification",
-      step4Desc: "Get official certification for your gas system safety.",
-      industriesWeServe: "Industries We Serve",
-      residential: "Residential",
-      residentialDesc: "Home gas systems and installations",
-      commercial: "Commercial",
-      commercialDesc: "Restaurants, hotels, business facilities",
-      industrial: "Industrial",
-      industrialDesc: "Factories, manufacturing plants, large facilities",
-      finalCta: "Ready for a Safe Gas System?",
-      finalCtaText: "Don't compromise on safety. Contact us today for professional inspection.",
-      requestInspection: "Request Inspection Now",
-      contactTitle: "Contact Us",
-      address: "123 Safety Street, Tirana",
-      phone: "+355 4X XXX XXXX",
-      email: "info@controltest.com",
-      hours: "Mon-Fri: 8:00-18:00 | Emergency: 24/7",
-      rights: "All rights reserved.",
-      tagline: "Your safety is our priority"
-    },
-    sq: {
-      home: "Kryefaqja",
-      about: "Rreth Nesh",
-      services: "Shërbimet",
-      contact: "Kontakt",
-      title: "Shërbime Profesionale të Kontrollit të Cevave të Gazit",
-      subtitle: "Sigurimi i Sigurisë Përmes Inspektimit dhe Testimit të Ekspertëve",
-      heroText: "Ne ofrojmë shërbime të plota të kontrollit dhe testimit të cevave të gazit për aplikime banesore, tregtare dhe industriale. Teknikët tanë të certifikuar sigurojnë që sistemet tuaja të gazit janë të sigurta dhe të përputhshme.",
-      cta: "Kërkoni Inspektim",
-      ourServices: "Shërbimet Tona",
-      service1Title: "Testimi i Presionit",
-      service1Desc: "Testim i plotë i presionit për të verifikuar integritetin e tubave dhe identifikuar rrjedhjet e mundshme.",
-      service2Title: "Inspektim Vizual",
-      service2Desc: "Ekzaminim i plotë i cevave të gazit, lidhjeve dhe instalimeve.",
-      service3Title: "Zbulimi i Rrjedhjeve",
-      service3Desc: "Zbulim i avancuar i rrjedhjeve duke përdorur pajisje dhe teknika të specializuara.",
-      service4Title: "Certifikim i Përputhshmërisë",
-      service4Desc: "Certifikatë zyrtare që konfirmon përputhshmërinë me standardet e sigurisë.",
-      service5Title: "Shërbime Emergjence",
-      service5Desc: "Përgjigje emergjence 24/7 për rrjedhje gazi dhe situata urgjente.",
-      service6Title: "Mirëmbajtje Parandaluese",
-      service6Desc: "Programe të rregullta mirëmbajtjeje për të parandaluar problemet.",
-      whyChooseUs: "Pse të Zgjidhni Control Test?",
-      feature1: "Ekspertë të Certifikuar",
-      feature1Desc: "Profesionistë të certifikuar dhe të trajnuar me vjetërsi përvoje.",
-      feature2: "Teknologji e Avancuar",
-      feature2Desc: "Pajisjet më të fundit për rezultate të sakta dhe të besueshme.",
-      feature3: "Përgjigje e Shpejtë",
-      feature3Desc: "Përgjigje e shpejtë për inspektime dhe emergjenca.",
-      feature4: "Çmime Konkurruese",
-      feature4Desc: "Shërbime cilësore me çmime konkurruese dhe transparente.",
-      aboutUs: "Rreth Control Test",
-      aboutText: "Me më shumë se 15 vjet përvojë, Control Test është ofruesi kryesor i shërbimeve të kontrollit të cevave të gazit. Angazhimi ynë për siguri dhe cilësi na veçon nga të tjerët.",
-      ourMission: "Misioni Jonë",
-      missionText: "Të sigurojmë nivelin më të lartë të sigurisë në sistemet e cevave të gazit përmes inspektimit dhe certifikimit profesional.",
-      ourVision: "Vizioni Jonë",
-      visionText: "Të bëhemi emri më i besuar në shërbimet e kontrollit të cevave të gazit.",
-      statistics: "Numrat Tanë Flasin",
-      projectsCompleted: "Projekte të Përfunduara",
-      happyClients: "Klientë të Kënaqur",
-      yearsExperience: "Vjet Përvojë",
-      certifiedTechnicians: "Teknikë të Certifikuar",
-      howItWorks: "Si Funksionon",
-      step1: "Na Kontaktoni",
-      step1Desc: "Lidhuni për të diskutuar nevojat tuaja dhe planifikoni inspektimin.",
-      step2: "Inspektim në Vend",
-      step2Desc: "Teknikët tanë të certifikuar kryejnë testim të plotë në vendndodhjen tuaj.",
-      step3: "Raport i Detajuar",
-      step3Desc: "Merrni raport të plotë me gjetjet dhe rekomandimet.",
-      step4: "Certifikim",
-      step4Desc: "Merrni certifikatën zyrtare për sigurinë e sistemit tuaj të gazit.",
-      industriesWeServe: "Industritë që Shërbejmë",
-      residential: "Banesore",
-      residentialDesc: "Sistemet dhe instalimet e gazit në shtëpi",
-      commercial: "Tregtare",
-      commercialDesc: "Restorante, hotele, objekte biznesi",
-      industrial: "Industriale",
-      industrialDesc: "Fabrika, impiante prodhimi, objekte të mëdha",
-      finalCta: "Gati për një Sistem të Sigurt Gazi?",
-      finalCtaText: "Mos komprometoni për sigurinë. Na kontaktoni sot për inspektim profesional.",
-      requestInspection: "Kërkoni Inspektim Tani",
-      contactTitle: "Na Kontaktoni",
-      address: "Rruga e Sigurisë 123, Tiranë",
-      phone: "+355 4X XXX XXXX",
-      email: "info@controltest.com",
-      hours: "E Hënë-Premte: 8:00-18:00 | Emergjence: 24/7",
-      rights: "Të gjitha të drejtat e rezervuara.",
-      tagline: "Siguria juaj është prioriteti ynë"
-    }
-  };
-
-  const t = translations[language];
 
   return (
-    <div className="app">
+ <main>
       <Header language={language} setLanguage={setLanguage} />
-      
-      <main className="main-content">
-        {/* Hero Section */}
-        <section className="hero-section" id="home">
-          <div className="container">
-            <div className="hero-content">
-              <h1>{t.title}</h1>
-              <p className="hero-subtitle">{t.subtitle}</p>
-              <p className="hero-description">{t.heroText}</p>
-              <button className="cta-button">{t.cta}</button>
-            </div>
-          </div>
-        </section>
-
-        {/* About Section */}
-         <section className="about-section" id="about">
-          <div className="container">
-            <h2 className="section-title">{t.aboutUs}</h2>
-            <div className="about-content">
-              <p className="about-text">{t.aboutText}</p>
-              <div className="mission-vision">
-                <div className="mission">
-                  <h3>{t.ourMission}</h3>
-                  <p>{t.missionText}</p>
-                </div>
-                <div className="vision">
-                  <h3>{t.ourVision}</h3>
-                  <p>{t.visionText}</p>
-                </div>
-              </div>
-            </div>
-           
-<div className="stats-grid">
-  <div className="stat-card">
-    <div className="stat-number">
-      <Counter target={500} suffix="+" duration={2000} />
-    </div>
-    <div className="stat-label">{t.projectsCompleted}</div>
-  </div>
-  <div className="stat-card">
-    <div className="stat-number">
-      <Counter target={98} suffix="%" duration={1500} />
-    </div>
-    <div className="stat-label">{t.happyClients}</div>
-  </div>
-  <div className="stat-card">
-    <div className="stat-number">
-      <Counter target={15} suffix="+" duration={1800} />
-    </div>
-    <div className="stat-label">{t.yearsExperience}</div>
-  </div>
-  <div className="stat-card">
-    <div className="stat-number">
-      <Counter target={25} suffix="+" duration={1600} />
-    </div>
-    <div className="stat-label">{t.certifiedTechnicians}</div>
-  </div>
-</div>
-          </div>
-        </section>
-
-        {/* Services Section */}
-        <section className="services-section" id="services">
-          <div className="container">
-            <h2 className="section-title">{t.ourServices}</h2>
-            <div className="services-grid">
-              {[
-                { title: t.service1Title, desc: t.service1Desc, icon: "🔧" },
-                { title: t.service2Title, desc: t.service2Desc, icon: "👁️" },
-                { title: t.service3Title, desc: t.service3Desc, icon: "🔍" },
-                { title: t.service4Title, desc: t.service4Desc, icon: "📋" },
-                { title: t.service5Title, desc: t.service5Desc, icon: "🚨" },
-                { title: t.service6Title, desc: t.service6Desc, icon: "🛠️" }
-              ].map((service, index) => (
-                <ServiceCard 
-                  key={index}
-                  title={service.title}
-                  description={service.desc}
-                  icon={service.icon}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* How It Works Section */}
-        <section className="process-section">
-          <div className="container">
-            <h2 className="section-title">{t.howItWorks}</h2>
-            <div className="process-steps">
-              {[
-                { step: t.step1, desc: t.step1Desc, number: "1" },
-                { step: t.step2, desc: t.step2Desc, number: "2" },
-                { step: t.step3, desc: t.step3Desc, number: "3" },
-                { step: t.step4, desc: t.step4Desc, number: "4" }
-              ].map((item, index) => (
-                <div key={index} className="process-step">
-                  <div className="step-number">{item.number}</div>
-                  <h3>{item.step}</h3>
-                  <p>{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Final CTA Section */}
-        <section className="cta-section">
-          <div className="container">
-            <div className="cta-content">
-              <h2>{t.finalCta}</h2>
-              <p>{t.finalCtaText}</p>
-              <button className="cta-button primary">{t.requestInspection}</button>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section className="contact-section" id="contact">
-          <div className="container">
-            <h2 className="section-title">{t.contactTitle}</h2>
-            <div className="contact-grid">
-              <div className="contact-card">
-                <div className="contact-icon">📍</div>
-                <h3>{t.address}</h3>
-              </div>
-              <div className="contact-card">
-                <div className="contact-icon">📞</div>
-                <h3>{t.phone}</h3>
-              </div>
-              <div className="contact-card">
-                <div className="contact-icon">✉️</div>
-                <h3>{t.email}</h3>
-                <p className="hours">{t.hours}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-      
-      <Footer language={language} />
-
-    </div>
+      <Hero translations={translations[language]} />
+      <About translations={translations[language]} />
+       <Activities translations={translations[language]} /> 
+      <Services translations={translations[language]} />
+     
+      <Process translations={translations[language]} />
+      <Projects translations={translations[language]} />
+      <Accreditation translations={translations[language]} />
+      <Contact translations={translations[language]} language={language} />
+      <Footer translations={translations[language]} />
+    </main>
   );
 }
