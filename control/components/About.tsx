@@ -19,7 +19,7 @@ export default function About({ translations }: AboutProps) {
             </a>
           </div>
           <div className="about-image">
-            <img src="/images/logo.jpg" alt="About Kontroll Test" />
+            <img src="/images/logo.png" alt="About Kontroll Test" />
           </div>
         </div>
       </div>
