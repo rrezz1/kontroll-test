@@ -54,8 +54,9 @@ export default function Header({ language, setLanguage }: HeaderProps) {
             <ul className="nav-links">
               <li><a href="#home">{t.home}</a></li>
               <li><a href="#about">{t.about}</a></li>
-              <li><a href="#services">{t.services}</a></li>
               <li><a href="#activities">{t.activities}</a></li>
+              <li><a href="#services">{t.services}</a></li>
+              
               <li><a href="#projects">{t.projects}</a></li>
               <li><a href="#contact">{t.contact}</a></li>
               <li>

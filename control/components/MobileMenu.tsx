@@ -62,15 +62,16 @@ export default function MobileMenu({ isOpen, onClose, language, setLanguage }: M
           </a>
         </li>
         <li>
-          <a href="#services" onClick={handleLinkClick}>
-            {t.services}
-          </a>
-        </li>
-        <li>
           <a href="#activities" onClick={handleLinkClick}>
             {t.activities}
           </a>
         </li>
+        <li>
+          <a href="#services" onClick={handleLinkClick}>
+            {t.services}
+          </a>
+        </li>
+
         <li>
           <a href="#projects" onClick={handleLinkClick}>
             {t.projects}
