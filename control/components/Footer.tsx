@@ -12,11 +12,11 @@ export default function Footer({ translations }: FooterProps) {
           <div className="footer-section">
             <h3>{translations.footer_about}</h3>
             <p>{translations.footer_about_text}</p>
-            <div className="social-links">
+            {/* <div className="social-links">
               <a href="#"><i className="fab fa-facebook-f"></i></a>
               <a href="#"><i className="fab fa-linkedin-in"></i></a>
               <a href="#"><i className="fab fa-twitter"></i></a>
-            </div>
+            </div> */}
           </div>
           
           <div className="footer-section">
@@ -32,6 +32,7 @@ export default function Footer({ translations }: FooterProps) {
             <p><i className="fas fa-envelope"></i> lumi652000@yahoo.de</p>
             <p><i className="fas fa-phone"></i> +38348731363</p>
             <p><i className="fas fa-phone"></i> +38344275327</p>
+            <p><i className="fas fa-phone"></i> +38345976848</p>
           </div>
         </div>
         

@@ -112,6 +112,7 @@ export default function Contact({ translations, language }: ContactProps) {
                 <div>
                   <p>+38348731363</p>
                   <p>+38344275327</p>
+                  <p>+38345976848</p>
                 </div>
               </div>
               
