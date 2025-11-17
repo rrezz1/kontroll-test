@@ -96,6 +96,8 @@ const translations: Translations = {
     contact_title: "Contact Us",
     contact_info: "Get In Touch",
     contact_address: "Lipjan, Kosovo",
+
+    accreditation: "Certificates",
     accreditation_title: "Accreditation Certificate",
     form_name: "Name",
     form_email: "Email",
@@ -201,6 +203,7 @@ step4_desc: "Akkreditierte Zertifizierung für Konformität und Sicherheit, gem�
     contact_title: "Kontaktieren Sie Uns",
     contact_info: "Kontakt Aufnehmen",
     contact_address: "Lipjan, Kosovo",
+    accreditation: "Zertifikate",
     accreditation_title: "Akkreditierungszertifikat",
     form_name: "Name",
     form_email: "E-Mail",
@@ -304,6 +307,8 @@ step4_desc: "Akkreditierte Zertifizierung für Konformität und Sicherheit, gem�
     contact_title: "Na Kontaktoni",
     contact_info: "Lidhuni me Ne",
     contact_address: "Lipjan, Kosovë",
+
+    accreditation: "Certifikatat",
     accreditation_title: "Certifikata e Akreditimit",
     form_name: "Emri",
     form_email: "Email",
