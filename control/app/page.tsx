@@ -127,7 +127,7 @@ const translations: Translations = {
   SistemeInstalime:"Gas systems and installations",
   SistemeInstalimeText:"Inspection of gas systems and installations",
 
-  RezervuareFtohese: "Cooling tanks",
+  RezervuareFtohese:"Cooling tanks",
   RezervuareFtoheseText:"Inspection of cooling tanks",
 
   RezervuariGLN:"LPG tank",
@@ -230,8 +230,8 @@ step4_desc: "Akkreditierte Zertifizierung für Konformität und Sicherheit, gem�
   SistemeInstalime:"Gasinstallationen und -anlagen",
   SistemeInstalimeText:"Inspektion von Gasinstallationen und -anlagen",
 
-  RezervuareFtohese: "Kühltanks",
-  RezervuareFtoheseText:"Inspektion von Kühltanks",
+  RezervuareFtohese:"Kühltanks",
+  RezervuareFtoheseText:"Inspektion von Kühltanks askdjbaskdbaskdbas dasdbaskdabs",
 
   RezervuariGLN:"LPG-Tank (Flüssiggas)",
   RezervuariGLNText:"Verdampfer und LPG-Druckregler, Prüfung und Kalibrierung von Sicherheitsventilen",
@@ -336,7 +336,7 @@ step4_desc: "Akkreditierte Zertifizierung für Konformität und Sicherheit, gem�
   SistemeInstalime:"Sisteme dhe instalime gazi",
   SistemeInstalimeText:"Inspektimi i sistemeve dhe instalimeve të gazit",
 
-  RezervuareFtohese: "Rezervuare ftohëse",
+  RezervuareFtohese:"Rezervuare ftohëse",
   RezervuareFtoheseText:"Inspektimi i rezervuarëve ftohës",
 
   RezervuariGLN:"Rezervuari i GLN-së",

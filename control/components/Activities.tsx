@@ -1,40 +1,57 @@
+'use client';
+
 import { TranslationKeys } from '@/types';
+import { useState } from 'react';
 
 interface ActivitiesProps {
   translations: TranslationKeys;
 }
 
-export default function Activities({ translations }: ActivitiesProps) {
-  const activities = [
+export default function Activities({ translations }: TranslationKeys) {
+  const [showAll, setShowAll] = useState(false);
+
+  const initialActivities = [
     {
-      title: 'asd',
-      description: "Kaldaja me avull dhe ujë të nxehtë, valvolat siguruese"
+      icon: 'fas fa-cogs',
+      title: translations.kadaja,
+      description: translations.kaldajaText
     },
     {
-      title: "Rezervuarët metalike",
-      description: "Për lëngje-gazra që operojnë me një presion të tepërt PS < 16 bar; TS < 200°C dhe 100 < V x PS < 4000"
+      icon: 'fas fa-cogs',
+      title: translations.RezervuaretMetalike,
+      description: translations.RezervuaretMetalikeText
     },
     {
-      title: "Tubacione për avull",
-      description: "6 bar < PS < 80 bar dhe ujë të nxehtë – 110°C < TS < 450°C dhe 100 < D x PS"
-    },
-    {
-      title: "Sisteme dhe instalime gazi",
-      description: "Inspektimi i sistemeve dhe instalimeve të gazit"
-    },
-    {
-      title: "Rezervuare ftohëse",
-      description: "Inspektimi i rezervuarëve ftohës"
-    },
-    {
-      title: "Rezervuari i GLN-së",
-      description: "Avulluesi dhe Reduktori i GLN-së, Testimi dhe Bazhadarimi i Valvolave Siguruese"
-    },
-    {
-      title: "Gypa, Kaldaja dhe Kolektorë",
-      description: "Inspektimi i gypave, kaldajave dhe kolektorëve"
+      icon: 'fas fa-cogs',
+      title: translations.Tubacione,
+      description: translations.TubacionetextL
     }
   ];
+
+  const additionalActivities = [
+    {
+      icon: 'fas fa-cogs',
+      title: translations.SistemeInstalime,
+      description: translations.SistemeInstalimeText
+    },
+    {
+      icon: 'fas fa-cogs',
+      title: translations.RezervuareFtohese,
+      description: translations.RezervuareFtoheseText
+    },
+    {
+      icon: 'fas fa-cogs',
+      title: translations.RezervuariGLN,
+      description: translations.RezervuariGLNText
+    },
+    {
+      icon: 'fas fa-cogs',
+      title: translations.Gypa,
+      description: translations.GypaText
+    }
+  ];
+
+  const displayedActivities = showAll ? [...initialActivities, ...additionalActivities] : initialActivities;
 
   return (
     <section className="activities-section" id="activities">
@@ -53,95 +70,44 @@ export default function Activities({ translations }: ActivitiesProps) {
         </div>
 
         <div className="activities-grid">
-          {/* {activities.map((activity, index) => (
+          {displayedActivities.map((activity, index) => (
             <div key={index} className="activity-card">
               <div className="activity-icon">
-                <i className="fas fa-cogs"></i>
+                <i className={activity.icon}></i>
               </div>
               <div className="activity-content">
                 <h3>{activity.title}</h3>
                 <p>{activity.description}</p>
               </div>
             </div>
-          ))} */}
-           <div  className="activity-card">
-              <div className="activity-icon">
-                <i className="fas fa-cogs"></i>
-              </div>
-              <div className="activity-content">
-                <h3>{translations.kadaja}</h3>
-                <p>{translations.kaldajaText}</p>
-              </div>
-            </div>
-
-            <div  className="activity-card">
-              <div className="activity-icon">
-                <i className="fas fa-cogs"></i>
-              </div>
-              <div className="activity-content">
-                <h3>{translations.RezervuaretMetalike}</h3>
-                <p>{translations.RezervuaretMetalikeText}</p>
-              </div>
-            </div>
-
-
-            <div  className="activity-card">
-              <div className="activity-icon">
-                <i className="fas fa-cogs"></i>
-              </div>
-              <div className="activity-content">
-                <h3>{translations.Tubacione}</h3>
-                <p>{translations.RezervuaretMetalikeText}</p>
-              </div>
-            </div>
-
-
-            <div  className="activity-card">
-              <div className="activity-icon">
-                <i className="fas fa-cogs"></i>
-              </div>
-              <div className="activity-content">
-                <h3>{translations.SistemeInstalime}</h3>
-                <p>{translations.SistemeInstalimeText}</p>
-              </div>
-            </div>
-
-
-              <div  className="activity-card">
-              <div className="activity-icon">
-                <i className="fas fa-cogs"></i>
-              </div>
-              <div className="activity-content">
-                <h3>{translations.RezervuareFtohese}</h3>
-                <p>{translations.RezervuareFtoheseText}</p>
-              </div>
-            </div>
-
-
-              <div  className="activity-card">
-              <div className="activity-icon">
-                <i className="fas fa-cogs"></i>
-              </div>
-              <div className="activity-content">
-                <h3>{translations.RezervuariGLN}</h3>
-                <p>{translations.RezervuariGLNText}</p>
-              </div>
-            </div>
-
-
-
-            <div  className="activity-card">
-              <div className="activity-icon">
-                <i className="fas fa-cogs"></i>
-              </div>
-              <div className="activity-content">
-                <h3>{translations.Gypa}</h3>
-                <p>{translations.GypaText}</p>
-              </div>
-            </div>
+          ))}
         </div>
-        
 
+        {/* Show More/Less Buttons */}
+        {!showAll && additionalActivities.length > 0 && (
+          <div className="show-more-container">
+            <button 
+              className="show-more-btn"
+              onClick={() => setShowAll(true)}
+            >
+              <i className="fas fa-chevron-down"></i>
+              Show More  ({additionalActivities.length} more)
+            </button>
+          </div>
+        )}
+
+        {showAll && (
+          <div className="show-less-container">
+            <button 
+              className="show-less-btn"
+              onClick={() => setShowAll(false)}
+            >
+              <i className="fas fa-chevron-up"></i>
+              Show Less
+            </button>
+          </div>
+        )}
+<br />
         {/* GLN Systems Images */}
         <div className="gln-section">
           <h3 className="gln-title">{translations.gln_systems}</h3>
@@ -163,6 +129,19 @@ export default function Activities({ translations }: ActivitiesProps) {
         .activities-section {
           padding: 5rem 0;
           background: var(--white);
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 1rem;
+        }
+
+        .section-title {
+          text-align: center;
+          margin-bottom: 2rem;
+          font-size: 2.5rem;
+          color: var(--dark);
         }
 
         .activities-intro {
@@ -218,18 +197,25 @@ export default function Activities({ translations }: ActivitiesProps) {
           grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
           gap: 2rem;
           margin-bottom: 4rem;
+          align-items: stretch;
         }
 
         .activity-card {
           background: var(--white);
           border-radius: 10px;
-          padding: 2rem;
+          padding: 2.5rem 2rem;
           box-shadow: var(--shadow);
           transition: var(--transition);
           display: flex;
-          align-items: flex-start;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
           gap: 1.5rem;
           border: 1px solid var(--light-gray);
+          height: 100%;
+          text-align: center;
+          min-height: 220px;
+          animation: fadeInUp 0.5s ease-out;
         }
 
         .activity-card:hover {
@@ -246,10 +232,19 @@ export default function Activities({ translations }: ActivitiesProps) {
           flex-shrink: 0;
         }
 
+        .activity-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          width: 100%;
+        }
+
         .activity-content h3 {
           font-size: 1.3rem;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.8rem;
           color: var(--dark);
+          line-height: 1.3;
         }
 
         .activity-content p {
@@ -258,6 +253,45 @@ export default function Activities({ translations }: ActivitiesProps) {
           margin: 0;
         }
 
+        /* Show More/Less Buttons */
+        .show-more-container,
+        .show-less-container {
+          text-align: center;
+          margin-top: 3rem;
+        }
+
+        .show-more-btn,
+        .show-less-btn {
+          background: transparent;
+          color: var(--primary);
+          border: 2px solid var(--primary);
+          padding: 12px 24px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-weight: 600;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          transition: var(--transition);
+        }
+
+        .show-more-btn:hover,
+        .show-less-btn:hover {
+          background: var(--primary);
+          color: white;
+          transform: translateY(-2px);
+        }
+
+        .show-less-btn {
+          background: var(--primary);
+          color: white;
+        }
+
+        .show-less-btn:hover {
+          background: var(--primary-dark);
+        }
+
+        /* GLN Section - Square Images (Same for all devices) */
         .gln-section {
           text-align: center;
           padding: 3rem 0 0;
@@ -272,9 +306,9 @@ export default function Activities({ translations }: ActivitiesProps) {
 
         .image-gallery {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          grid-template-columns: repeat(3, 1fr); /* Gjithmonë 3 kolona */
           gap: 1.5rem;
-          max-width: 800px;
+          max-width: 900px;
           margin: 0 auto;
         }
 
@@ -283,6 +317,8 @@ export default function Activities({ translations }: ActivitiesProps) {
           overflow: hidden;
           box-shadow: var(--shadow);
           transition: var(--transition);
+          aspect-ratio: 1 / 1; /* Kjo e bën imazhin katror */
+          position: relative;
         }
 
         .gallery-image:hover {
@@ -292,25 +328,35 @@ export default function Activities({ translations }: ActivitiesProps) {
 
         .gallery-image img {
           width: 100%;
-          height: 200px;
+          height: 100%;
           object-fit: cover;
           display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
         }
 
-        /* Mobile Responsive */
+        /* Animations */
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        /* Adjust gap and size for smaller screens but keep 3 columns */
         @media (max-width: 768px) {
           .activities-grid {
             grid-template-columns: 1fr;
           }
 
           .activity-card {
-            padding: 1.5rem;
-            flex-direction: column;
-            text-align: center;
-          }
-
-          .activity-icon {
-            align-self: center;
+            padding: 2rem 1.5rem;
+            min-height: 200px;
           }
 
           .regulations {
@@ -322,7 +368,13 @@ export default function Activities({ translations }: ActivitiesProps) {
           }
 
           .image-gallery {
-            grid-template-columns: 1fr;
+            gap: 1rem; /* Më pak hapësirë midis imazheve në mobile */
+          }
+
+          .show-more-btn,
+          .show-less-btn {
+            width: 100%;
+            justify-content: center;
           }
         }
 
@@ -332,7 +384,8 @@ export default function Activities({ translations }: ActivitiesProps) {
           }
 
           .activity-card {
-            padding: 1rem;
+            padding: 1.5rem 1rem;
+            min-height: 180px;
           }
 
           .activity-icon {
@@ -340,8 +393,29 @@ export default function Activities({ translations }: ActivitiesProps) {
             padding: 0.75rem;
           }
 
-          .gallery-image img {
-            height: 150px;
+          .image-gallery {
+            gap: 0.8rem; /* Edhe më pak hapësirë në telefona të vegjël */
+          }
+
+          .show-more-btn,
+          .show-less-btn {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+          }
+        }
+
+        /* For very small screens, reduce padding but keep 3 columns */
+        @media (max-width: 360px) {
+          .container {
+            padding: 0 0.5rem;
+          }
+
+          .image-gallery {
+            gap: 0.5rem;
+          }
+
+          .gln-title {
+            font-size: 1.5rem;
           }
         }
       `}</style>
