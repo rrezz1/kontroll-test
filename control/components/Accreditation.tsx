@@ -107,7 +107,7 @@ export default function Accreditation({ translations }: AccreditationProps) {
               alt="Full screen accreditation" 
               className="fullscreen-image"
             />
-            <div className="fullscreen-controls">
+            {/* <div className="fullscreen-controls">
               <button 
                 className="download-btn"
                 onClick={() => {
@@ -128,7 +128,7 @@ export default function Accreditation({ translations }: AccreditationProps) {
                 <i className="fas fa-times"></i>
                 Close
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       )}
