@@ -7,7 +7,7 @@ interface ActivitiesProps {
   translations: TranslationKeys;
 }
 
-export default function Activities({ translations }: TranslationKeys) {
+export default function Activities({ translations }: ActivitiesProps) {
   const [showAll, setShowAll] = useState(false);
 
   const initialActivities = [
