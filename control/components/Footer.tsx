@@ -59,7 +59,7 @@ export default function Footer({ translations }: FooterProps) {
         </div>
         
         <div className="footer-bottom">
-          <p>&copy; {currentYear} Kontroll Test SH.P.K. <span>{translations.footer_rights}</span>.</p>
+          <p>&copy; {currentYear}<span>{translations.footer_rights}</span>.</p>
         </div>
       </div>
     </footer>
