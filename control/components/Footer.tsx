@@ -5,6 +5,8 @@ interface FooterProps {
 }
 
 export default function Footer({ translations }: FooterProps) {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="container">
@@ -37,7 +39,7 @@ export default function Footer({ translations }: FooterProps) {
         </div>
         
         <div className="footer-bottom">
-          <p>&copy; 2023 Kontroll Test SH.P.K. <span>{translations.footer_rights}</span>.</p>
+          <p>&copy; {currentYear} <span>{translations.footer_rights}</span>.</p>
         </div>
       </div>
     </footer>

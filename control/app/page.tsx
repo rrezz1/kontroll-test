@@ -110,7 +110,7 @@ const translations: Translations = {
     footer_about_text: "Professional non-destructive testing and inspection services with 18+ years of experience.",
     footer_services: "Our Services",
     footer_contact: "Contact Info",
-    footer_rights: "All rights reserved",
+    footer_rights: "Kontroll Test L.L.C. All rights reserved",
 
     rregullorjaMED:"Regulations (MED) NR. 02/2019 For the inspection , review, and assessment of the technical safety of pressure equipment in operation.",
     law06:"Law No. 06/L-031 on pressure equipment – Authorizations for performing the technical inspection of high-risk installations",
@@ -214,7 +214,7 @@ step4_desc: "Akkreditierte Zertifizierung für Konformität und Sicherheit, gem�
     footer_about_text: "Professionelle zerstörungsfreie Prüf- und Inspektionsdienstleistungen mit mehr als 18 Jahren Erfahrung.",
     footer_services: "Unsere Dienstleistungen",
     footer_contact: "Kontaktinformationen",
-    footer_rights: "Alle Rechte vorbehalten",
+    footer_rights: "Kontroll Test GmbH. Alle Rechte vorbehalten",
     rregullorjaMED:"Die Verordnung (MWE) NR. 02/2019 Für die Kontrolle, Überprüfung und Bewertung der technischen Sicherheit von Druckgeräten im Betrieb.",
     law06:"Gesetz Nr. 06/L-031 über Druckgeräte – Genehmigungen zur Durchführung der technischen Inspektion von Hochrisikoanlagen",
 
@@ -319,7 +319,7 @@ step4_desc: "Akkreditierte Zertifizierung für Konformität und Sicherheit, gem�
     footer_about_text: "Shërbime profesionale të testimit dhe inspektimit pa shkatërrim me më shumë se 18 vjet përvojë.",
     footer_services: "Shërbimet Tona",
     footer_contact: "Informacione Kontakti",
-    footer_rights: "Të gjitha të drejtat e rezervuara",
+    footer_rights: "Kontroll Test Sh.P.K. Të gjitha të drejtat e rezervuara",
     rregullorjaMED:"Rregullorja (MZHE) nr. 02/2019 për kontrollin, shqyrtimin dhe vlerësimin e sigurisë teknike të pajisjeve nën presion në shfrytëzim.",
   law06:"Ligji nr. 06/L-031 për pajisjet nën presion – Autorizime për kryerjen e inspektimit teknik të instalimeve me rrezikshmëri të lartë.",
  
