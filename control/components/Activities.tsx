@@ -413,7 +413,6 @@ export default function Activities({ translations }: ActivitiesProps) {
           .image-gallery {
             gap: 0.5rem;
           }
-
           .gln-title {
             font-size: 1.5rem;
           }
