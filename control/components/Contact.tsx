@@ -97,24 +97,40 @@ export default function Contact({ translations, language }: ContactProps) {
             <h3>{translations.contact_info}</h3>
             <div className="contact-details">
               <div className="contact-item">
-                <div className="contact-icon">
-                  <i className="fas fa-envelope"></i>
-                </div>
-                <div>
-                  <p>lumi652000@yahoo.de</p>
-                </div>
-              </div>
-              
-              <div className="contact-item">
-                <div className="contact-icon">
-                  <i className="fas fa-phone"></i>
-                </div>
-                <div>
-                  <p>+38348731363</p>
-                  <p>+38344275327</p>
-                  <p>+38345976848</p>
-                </div>
-              </div>
+  <div className="contact-icon">
+    <i className="fas fa-envelope"></i>
+  </div>
+  <div>
+    <p>
+      <a href="mailto:lumi652000@yahoo.de" className="contact-link">
+        lumi652000@yahoo.de
+      </a>
+    </p>
+  </div>
+</div>
+
+<div className="contact-item">
+  <div className="contact-icon">
+    <i className="fas fa-phone"></i>
+  </div>
+  <div>
+    <p>
+      <a href="tel:+38348731363" className="contact-link">
+        +38348731363
+      </a>
+    </p>
+    <p>
+      <a href="tel:+38344275327" className="contact-link">
+        +38344275327
+      </a>
+    </p>
+    <p>
+      <a href="tel:+38345976848" className="contact-link">
+        +38345976848
+      </a>
+    </p>
+  </div>
+</div>
               
               <div className="contact-item">
                 <div className="contact-icon">
@@ -237,6 +253,16 @@ export default function Contact({ translations, language }: ContactProps) {
       </div>
 
       <style jsx>{`
+      .contact-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #007bff; /* or your preferred hover color */
+  text-decoration: underline;
+}
         .contact {
           background: var(--light);
         }

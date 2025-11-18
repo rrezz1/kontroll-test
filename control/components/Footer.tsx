@@ -31,15 +31,35 @@ export default function Footer({ translations }: FooterProps) {
           
           <div className="footer-section">
             <h3>{translations.footer_contact}</h3>
-            <p><i className="fas fa-envelope"></i> lumi652000@yahoo.de</p>
-            <p><i className="fas fa-phone"></i> +38348731363</p>
-            <p><i className="fas fa-phone"></i> +38344275327</p>
-            <p><i className="fas fa-phone"></i> +38345976848</p>
+            <p>
+              
+              <a href="mailto:lumi652000@yahoo.de" className="contact-link">
+               <i className="fas fa-envelope"></i>{' '} lumi652000@yahoo.de
+              </a>
+            </p>
+            <p>
+              
+              <a href="tel:+38348731363" className="contact-link">
+               <i className="fas fa-phone"></i>{' '} +38348731363
+              </a>
+            </p>
+            <p>
+            
+              <a href="tel:+38344275327" className="contact-link">
+                  <i className="fas fa-phone"></i>{' '}+38344275327
+              </a>
+            </p>
+            <p>
+             
+              <a href="tel:+38345976848" className="contact-link">
+                 <i className="fas fa-phone"></i>{' '}+38345976848
+              </a>
+            </p>
           </div>
         </div>
         
         <div className="footer-bottom">
-          <p>&copy; {currentYear} <span>{translations.footer_rights}</span>.</p>
+          <p>&copy; {currentYear} Kontroll Test SH.P.K. <span>{translations.footer_rights}</span>.</p>
         </div>
       </div>
     </footer>
