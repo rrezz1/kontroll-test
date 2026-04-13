@@ -135,6 +135,8 @@ const translations: Translations = {
 
   Gypa:"Pipes, Boilers, and Collectors",
   GypaText:"Inspection of pipes, boilers, and collectors",
+  and_more_title: "And Many More...",
+  and_more_desc: "Many more projects completed successfully.",
   },
   de: {
   project1_Titlee:"Relux-Llapnaselle (Prishtine)",
@@ -238,6 +240,8 @@ step4_desc: "Akkreditierte Zertifizierung für Konformität und Sicherheit, gem�
 
   Gypa:"Rohre, Kessel und Kollektoren",
   GypaText:"Inspektion der Rohre, Kessel und Kollektoren",
+  and_more_title: "Und Noch Vieles Mehr...",
+and_more_desc: "Viele weitere Projekte erfolgreich abgeschlossen.",
   },
   sq: {
 
@@ -345,7 +349,8 @@ step4_desc: "Akkreditierte Zertifizierung für Konformität und Sicherheit, gem�
   Gypa:"Gypa, Kaldaja dhe Kolektorë",
   GypaText:"Inspektimi i gypave, kaldajave dhe kolektorëve",
   
-
+and_more_title: "Dhe Shumë Më Tepër...",
+and_more_desc: "Shumë projekte të tjera të realizuara me sukses.",
 }
 };
 

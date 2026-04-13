@@ -109,20 +109,19 @@ export default function Activities({ translations }: ActivitiesProps) {
         )}
 <br />
         {/* GLN Systems Images */}
-        <div className="gln-section">
-          <h3 className="gln-title">{translations.gln_systems}</h3>
-          <div className="image-gallery">
-            <div className="gallery-image">
-              <img src="/images/RezervarFtohese/1.png" alt="Rezervuar Ftohës 1" />
-            </div>
-            <div className="gallery-image">
-              <img src="/images/RezervarFtohese/2.png" alt="Rezervuar Ftohës 2" />
-            </div>
-            <div className="gallery-image">
-              <img src="/images/RezervarFtohese/3.png" alt="Rezervuar Ftohës 3" />
-            </div>
+      {/* GLN Systems Images */}
+      <div className="gln-section">
+        <h3 className="gln-title">{translations.gln_systems}</h3>
+        <div className="image-gallery">
+          <div className="gallery-image">
+            <img src="/images/RezervarFtohese/1.png" alt="Rezervuar Ftohës 1" />
+          </div>
+          <div className="gallery-image">
+            <img src="/images/RezervarFtohese/2.png" alt="Rezervuar Ftohës 2" />
           </div>
         </div>
+      </div>
+
       </div>
 
       <style jsx>{`
@@ -304,13 +303,13 @@ export default function Activities({ translations }: ActivitiesProps) {
           color: var(--dark);
         }
 
-        .image-gallery {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr); /* Gjithmonë 3 kolona */
-          gap: 1.5rem;
-          max-width: 900px;
-          margin: 0 auto;
-        }
+      .image-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        max-width: 600px; /* nga 900px në 600px për 2 imazhe */
+        margin: 0 auto;
+      }
 
         .gallery-image {
           border-radius: 10px;

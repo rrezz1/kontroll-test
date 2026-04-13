@@ -36,6 +36,9 @@ export default function Footer({ translations }: FooterProps) {
               <a href="mailto:lumi652000@yahoo.de" className="contact-link">
                <i className="fas fa-envelope"></i>{' '} lumi652000@yahoo.de
               </a>
+              <a href="mailto:ermallushi70@gmail.com" className="contact-link">
+               <i className="fas fa-envelope"></i>{' '} ermallushi70@gmail.com
+              </a>
             </p>
             <p>
               

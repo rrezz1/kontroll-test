@@ -106,6 +106,11 @@ export default function Contact({ translations, language }: ContactProps) {
         lumi652000@yahoo.de
       </a>
     </p>
+     <p>
+      <a href="mailto:ermallushi70@gmail.com" className="contact-link">
+        ermallushi70@gmail.com
+      </a>
+    </p>
   </div>
 </div>
 

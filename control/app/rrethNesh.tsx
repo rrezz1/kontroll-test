@@ -23,7 +23,7 @@ type TranslationKey =
   | 'industriesWeServe' | 'residential' | 'residentialDesc' | 'commercial'
   | 'commercialDesc' | 'industrial' | 'industrialDesc' | 'finalCta' | 'finalCtaText'
   | 'requestInspection' | 'contactTitle' | 'address' | 'phone' | 'email' | 'hours'
-  | 'rights' | 'tagline' | 'ourQualifications' | 'viewCertificate';
+  | 'rights' | 'tagline' | 'ourQualifications' | 'viewCertificate' ;
 
 type Translations = {
   en: Record<TranslationKey, string>;

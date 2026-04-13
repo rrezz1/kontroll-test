@@ -94,7 +94,8 @@ projects:string;
   GypaText:string;
 
 
-
+ and_more_title:string;
+ and_more_desc : string;
 
   //how it works
   how_it_works:string;
